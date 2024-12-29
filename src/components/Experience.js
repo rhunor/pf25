@@ -58,21 +58,43 @@ const Experience = () => {
 
         <ul className="w-full flex flex-col items-start justify-between ml-4 xs:ml-2">
           <Details
-            position="Developer"
-            company="Stellar Innovations"
-            time="2020 - 2024"
-            address="200 Innovations st"
-            companyLink="https://github.com/lilxyzz/clay-theme"
-            work="At Stellar Innovations, I serve as a web developer, where I play a crucial role in designing and implementing cutting-edge web solutions. My responsibilities include developing responsive and high-performance websites and applications using technologies such as HTML, CSS, JavaScript, React, and Node.js. I collaborate closely with cross-functional teams to ensure our projects meet the highest standards of functionality and user experience. One of my key achievements at Stellar Innovations has been leading the development of a comprehensive e-commerce platform that significantly enhanced our client's online presence and sales. My work is driven by a passion for continuous learning and innovation, always striving to push the boundaries of what's possible in web development."
+            position="Developer & Solutions Architect"
+            company="Huawei Technologies"
+            time="2024"
+            address="victoria island, Lagos"
+            companyLink="https://www.huawei.com"
+            work=" Develop and maintain responsive web applications using Next,
+React, Redux, Node.js, and MongoDB.
+• Design and implement RESTful APIs using Node.js, Express.js,
+and MongoDB.
+• Write optimized SQL queries for efficient database operations.
+• Participate in code reviews and contribute to the development of
+coding standards and best practices.
+• Implement automated testing and continuous integration
+processes to ensure high-quality code and timely delivery of
+software solutions.
+• Utilize Huawei SaaS to manage alarms on sites in the Tele-
+communication sector and used java script to implement
+processes "
           />
 
           <Details
-            position="Rad Tester"
-            company="Vault Technologies"
-            time="2018 - 2020"
-            address="404 Tech st"
-            companyLink="https://github.com/lilxyzz/holo-theme"
-            work="At Vault Technologies, I worked as a RAD (Rapid Application Development) Tester, where I was responsible for ensuring the quality and functionality of our software applications during the development process. My role involved designing and executing test plans, identifying and documenting bugs, and working closely with developers to resolve issues quickly. This position required a deep understanding of the software development lifecycle and a keen eye for detail to ensure our applications met the highest standards of performance and reliability. My contributions at Vault Technologies helped streamline our development processes and significantly improved the overall quality of our software products."
+            position="Developer & Oil Chemical Consultant"
+            company="Lechem Tech"
+            time="2017 - 2022"
+            address="83 effurun road, Warri"
+            companyLink="https://www.lechemtech.com"
+            work="Utilized expertise in chemical mixing and blending to supply critical production chemicals for oil separation processes in a fast-paced production plant environment.
+
+*Key Responsibilities:*
+
+- Mixed and blended various chemicals to create specialized production chemicals (demulsifiers) for oil separation
+- Ensured accurate formulation and quality control of chemical solutions
+- Supported oil production processes by providing timely and efficient delivery of production chemicals
+- Facilitated separation of oil from dirt, water, and other impurities
+- Contributed to the success of downstream processes, including fractional distillation
+
+Demulsifiers (chemicals that separate oil from water and other impurities) "
           />
         </ul>
       </div>
@@ -88,7 +110,7 @@ const Experience = () => {
         >
           View Projects
         </Link>
-        <Link
+        {/* <Link
           href="/articles/"
           target={"_self"}
           className={`flex items-center rounded-lg border-2 border-solid bg-dark p-2.5 px-6 text-lg font-semibold
@@ -98,7 +120,7 @@ const Experience = () => {
              `}
         >
           View Articles
-        </Link>
+        </Link> */}
       </div>
     </div>
   );

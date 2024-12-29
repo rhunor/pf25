@@ -9,7 +9,7 @@ const NotFound = () => {
   return (
     <>
       <Head>
-        <title>Awesome Portfolio Built with Nextjs | 404 Page </title>
+        <title>John Rhunor portfolio website | 404 Page </title>
       </Head>
       <TransitionEffect />
       <main className="h-[100vh] w-full dark:bg-dark ">

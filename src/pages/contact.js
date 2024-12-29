@@ -4,6 +4,7 @@ import Head from "next/head";
 import AnimatedText from "@/components/AnimatedText";
 import TransitionEffect from "@/components/TransitionEffect";
 import { useRouter } from "next/router";
+import emailjs from "@emailjs/browser";
 
 // Netlify Form config
 
@@ -14,6 +15,7 @@ export default function About() {
     email: "",
     message: "",
   });
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -23,35 +25,53 @@ export default function About() {
     e.preventDefault();
     const myForm = e.target;
     const formData = new FormData(myForm);
-    try {
-      const response = await fetch("/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-        body: new URLSearchParams(formData).toString(),
-      });
-
-      if (response.ok) {
-        // Handle success, e.g., redirect to a thank you page
-        router.push("/thanks");
-      } else {
-        // Handle error
-        console.error("Form submission failed!", response);
-      }
-    } catch (error) {
-      // Handle error
-      console.error("An error occurred during form submission:", error);
-    }
+    emailjs
+    .send(
+        
+      process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
+      process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
+      {
+        from_name: formData.get("name"),
+        to_name: "John Rhunor",
+        from_email: formData.get("email"),
+        to_email: "johnighoshemu@gmail.com",
+        message: formData.get("message"),
+      },
+      process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+    )
+      .then(
+        async () => {
+          try {
+            const response = await fetch("/", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+              },
+              body: new URLSearchParams(formData).toString(),
+            });
+      
+            if (response.ok) {
+              // Handle success, e.g., redirect to a thank you page
+              router.push("/thanks");
+            } else {
+              // Handle error
+              console.error("Form submission failed!", response);
+            }
+          } catch (error) {
+            // Handle error
+            console.error("An error occurred during form submission:", error);
+          }
+        }
+      );
   };
 
   return (
     <>
       <Head>
-        <title>NexTemp Built with Nextjs</title>
+        <title>John Rhunor's Portfolio</title>
         <meta
           name="description"
-          content="NexTemp, A open-source portfolio theme built with Nextjs"
+          content="John Rhunors Portolio website"
         />
       </Head>
 
@@ -105,6 +125,7 @@ I'm One Message Away 👋"
                         <input
                           type="text"
                           name="name"
+                          value={formData.name}
                           required
                           autoComplete="name"
                           className="mt-1 p-2 w-full border border-solid border-dark rounded-md bg-light dark:border-light dark:bg-dark dark:text-light"
@@ -119,6 +140,7 @@ I'm One Message Away 👋"
                         <input
                           type="email"
                           name="email"
+                          value={formData.email}
                           required
                           autoComplete="off"
                           className="mt-1 p-2 w-full border border-solid border-dark rounded-md bg-light dark:border-light dark:bg-dark dark:text-light"
@@ -135,6 +157,7 @@ I'm One Message Away 👋"
                         Message:
                         <textarea
                           name="message"
+                          value={formData.message}
                           id="message"
                           required
                           rows="4"
@@ -162,3 +185,4 @@ I'm One Message Away 👋"
     </>
   );
 }
+

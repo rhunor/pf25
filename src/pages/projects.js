@@ -7,7 +7,8 @@ import Link from "next/link";
 import { useRef } from "react";
 import { HireMe2 } from "@/components/HireMe2";
 
-import proj1 from "../../public/images/projects/clay-theme.png";
+import proj1 from "../../public/images/projects/radiance.png";
+import proj2 from "../../public/images/projects/youtube.png";
 import loading from "../../public/images/articles/GTA6-VICE.gif";
 
 import TransitionEffect from "@/components/TransitionEffect";
@@ -234,7 +235,7 @@ export default function Projects() {
         <title>Projects | By John Rhunor</title>
         <meta
           name="description"
-          content="NexTemp, A open-source portfolio theme built with Nextjs"
+          content="John Rhunor's Projects, A collection of projects built with Nextjs, Gatsby, React, and more."
         />
       </Head>
 
@@ -251,35 +252,35 @@ export default function Projects() {
             <div className="col-span-12">
               <FeaturedProject
                 type="Design & Development"
-                tools="HTML | CSS | JavaScript | Gatsby"
-                title="Clay - Gatsby Theme"
-                summary="Image-centric Gatsby theme for publishers, portfolio, photographers blogs and more."
+                tools="Next | React | JavaScript | Tailwind"
+                title="Radiance Home care"
+                summary="Website for canadian healthcare brand radiance home care"
                 img={proj1}
-                date="2023"
+                date="2024"
                 link="/projects/clay-gatsby-theme"
-                github="https://travislord.xyz/projects/clay-gatsby-theme"
+                github="https://radiancehomecare.ca/"
               />
             </div>
             <div className="col-span-6 sm:col-span-12">
               <Project
                 type="Design & Development"
-                tools="HTML | CSS | JavaScript | Gatsby"
-                title="Clay - Gatsby Theme"
-                img={proj1}
+                tools="Next | React | JavaScript | Tailwind"
+                title="RhunorTube"
+                img={proj2}
                 date="2023"
-                link="/projects/clay-gatsby-theme"
-                github="https://travislord.xyz/projects/clay-gatsby-theme"
+                link="/projects/rhunortube"
+                github="https://dulcet-dodol-3ec821.netlify.app/"
               />
             </div>
             <div className="col-span-6 sm:col-span-12">
               <Project
                 type="Design & Development"
-                tools="HTML | CSS | JavaScript | Gatsby"
-                title="Clay - Gatsby Theme"
+                tools="Next | React | JavaScript | Tailwind"
+                title="Lechem Tech"
                 img={proj1}
-                date="2023"
-                link="/projects/clay-gatsby-theme"
-                github="https://travislord.xyz/projects/clay-gatsby-theme"
+                date="2025"
+                link="/projects/lechem"
+                github="https://lechemtech.com/"
               />
             </div>
           </div>
@@ -291,12 +292,12 @@ export default function Projects() {
                 img={loading}
                 time="1 min read"
                 date=""
-                link="https://github.com/lilxyzz/"
+                link="https://github.com/rhunor/"
               />
             </ul>
 
             <div className="mt-2 flex items-center justify-between gap-3 grid-cols-2">
-              <Link
+              {/* <Link
                 href="/articles/"
                 target={"_self"}
                 className={`flex items-center rounded-lg border-2 border-solid bg-light p-2.5 px-6 text-lg font-semibold
@@ -306,7 +307,7 @@ export default function Projects() {
              `}
               >
                 View Articles
-              </Link>
+              </Link> */}
               <Link
                 href="/about/"
                 target={"_self"}

@@ -9,7 +9,7 @@ import TransitionEffect from "@/components/TransitionEffect";
 import { GithubIcon } from "@/components/Icons";
 import { DevIcon } from "@/components/Icons";
 
-import proj1 from "/public/images/projects/radiance.png";
+import proj2 from "/public/images/projects/youtube.png";
 
 function AnimatedNumberFramerMotion({ value }) {
   const ref = useRef(null);
@@ -41,14 +41,14 @@ export default function About() {
       <Head>
         <link
           rel="canonical"
-          href="https://radiancehomecare.ca/"
+          href="https://dulcet-dodol-3ec821.netlify.app/"
         ></link>
         <title>
-         Radiance Home Care
+         RhunorTube
         </title>
         <meta
           name="description"
-          content="Radiance Home Care"
+          content="Rhunor YouTube"
         />
       </Head>
 
@@ -58,7 +58,7 @@ export default function About() {
       >
         <Layout className="pt-16">
           <AnimatedText
-            text="Radiance Home Care"
+            text="RhuorTube"
             className="mb-16 !text-8xl !leading-tight lg:!text-7xl sm:!text-6xl xs:!text-4xl sm:mb-8"
           />
 
@@ -68,27 +68,20 @@ export default function About() {
             md:col-span-8"
             >
               <h2 className="mb-4 text-2xl font-bold capitalize text-dark/75 dark:text-light/75">
-                Home Care Services | Radiance Home Care
+              RhunorTube | youtube clone project
               </h2>
               <h3 className="mb-4 text-lg font-bold  text-lightGreen dark:text-primaryDark">
                 Content | Web Design | UX/UI | Development
               </h3>
               <div classNname="w-full border-2 border-solid border-light bg-light"></div>
               <p className="">
-              At Radiance Homecare, we are dedicated to enhancing the quality of
-life for your loved ones through compassionate, professional, and
-personalized care.
+              RhunorTube is a youtube clone project that I built using React and YouTube API.
               </p>
               <h4 className="mt-4 text-lg font-800 capitalize text-dark/75 dark:text-light/75">
-              We offer a comprehensive range of home health
-              services, both medical and non-medical
+              
               </h4>
               <p className="my-4">
-              , holistically tailored to meet
-each individual’s unique needs—whether for short-term recovery or
-long-term care. Our commitment to incorporating current,
-evidence-based practices ensures that we provide safe, effective care
-at every step.
+              The project was built to showcase my ability to work with APIs and build a project that mimics the functionality of a popular website.
               </p>
 
               <div className="mt-2 flex items-center grid-cols-8 gap-4 sm:gap-8">
@@ -100,13 +93,13 @@ at every step.
             dark:bg-light dark:text-dark dark:hover:border-light dark:hover:bg-dark dark:hover:text-light
             md:p-2 md:px-4 md:text-base"
                   aria-label="Visit Theme Demo"
-                  href="https://radiancehomecare.ca/"
+                  href="https://dulcet-dodol-3ec821.netlify.app/"
                   target={"_blank"}
                 >
                   Visit Website
                 </Link>
                 <Link
-                  href="https://radiancehomecare.ca/"
+                  href="https://dulcet-dodol-3ec821.netlify.app/"
                   target={"_blank"}
                   className="w-10"
                   aria-label="github link"
@@ -114,7 +107,7 @@ at every step.
                   <GithubIcon />
                 </Link>
                 <Link
-                  href="https://radiancehomecare.ca/"
+                  href="https://dulcet-dodol-3ec821.netlify.app/"
                   target={"_blank"}
                   className="w-10"
                   aria-label="github link"
@@ -136,8 +129,8 @@ at every step.
               />
               <Image
                 className="h-auto w-full rounded-2xl"
-                src={proj1}
-                alt="Radiance Home Care"
+                src={proj2}
+                alt="Rhunor YouTube"
                 sizes="(max-width: 768px) 100vw,
               (max-width: 1200px) 50vw,
               33vw"

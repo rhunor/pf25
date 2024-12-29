@@ -11,6 +11,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
+    "emailjs": "^4.0.3",
     "eslint": "^9.9.1",
     "eslint-config-next": "^15.1.2",
     "framer-motion": "^11.3.31",
