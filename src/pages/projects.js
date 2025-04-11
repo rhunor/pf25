@@ -9,6 +9,7 @@ import { HireMe2 } from "@/components/HireMe2";
 
 import proj1 from "../../public/images/projects/radiance.png";
 import proj2 from "../../public/images/projects/youtube.png";
+import proj3 from "/public/images/projects/gha.png";
 import loading from "../../public/images/articles/GTA6-VICE.gif";
 
 import TransitionEffect from "@/components/TransitionEffect";
@@ -276,11 +277,12 @@ export default function Projects() {
               <Project
                 type="Design & Development"
                 tools="Next | React | JavaScript | Tailwind"
-                title="Lechem Tech"
-                img={proj1}
+                title="Gifted Homes & Apartments"
+                summary="Website for gifted homes and apartments Real estate company"
+                img={proj3}
                 date="2025"
-                link="/projects/lechem"
-                github="https://lechemtech.com/"
+                link="/projects/giftedhomes"
+                github="https://www.giftedhomesandapartments.com/"
               />
             </div>
           </div>

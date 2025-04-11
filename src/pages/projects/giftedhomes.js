@@ -9,7 +9,7 @@ import TransitionEffect from "@/components/TransitionEffect";
 import { GithubIcon } from "@/components/Icons";
 import { DevIcon } from "@/components/Icons";
 
-import proj2 from "/public/images/projects/youtube.png";
+import proj3 from "/public/images/projects/gha.png";
 
 function AnimatedNumberFramerMotion({ value }) {
   const ref = useRef(null);
@@ -41,14 +41,14 @@ export default function About() {
       <Head>
         <link
           rel="canonical"
-          href="https://dulcet-dodol-3ec821.netlify.app/"
+          href="https://www.giftedhomesandapartments.com/"
         ></link>
         <title>
-         RhunorTube
+         Gifted Homes and Apartments 
         </title>
         <meta
           name="description"
-          content="Rhunor YouTube"
+          content="Gifted Homes and Apartments is a real estate website that I built using Next and Mongodb."
         />
       </Head>
 
@@ -58,7 +58,7 @@ export default function About() {
       >
         <Layout className="pt-16">
           <AnimatedText
-            text="RhuorTube"
+            text="Gifted Homes and Apartments"
             className="mb-16 !text-8xl !leading-tight lg:!text-7xl sm:!text-6xl xs:!text-4xl sm:mb-8"
           />
 
@@ -68,14 +68,14 @@ export default function About() {
             md:col-span-8"
             >
               <h2 className="mb-4 text-2xl font-bold capitalize text-dark/75 dark:text-light/75">
-              RhunorTube | youtube clone project
+              Gifted Homes and Apartments
               </h2>
               <h3 className="mb-4 text-lg font-bold  text-lightGreen dark:text-primaryDark">
                 Content | Web Design | UX/UI | Development
               </h3>
               <div classNname="w-full border-2 border-solid border-light bg-light"></div>
               <p className="">
-              RhunorTube is a youtube clone project that I built using React and YouTube API.
+              Gifted Homes and Apartments is a real estate website designed to provide users with a seamless experience in exploring property listings, viewing details, and connecting with real estate agents. The platform is built with modern web technologies to ensure responsiveness and user-friendliness.
               </p>
               <h4 className="mt-4 text-lg font-800 capitalize text-dark/75 dark:text-light/75">
               
@@ -93,13 +93,13 @@ export default function About() {
             dark:bg-light dark:text-dark dark:hover:border-light dark:hover:bg-dark dark:hover:text-light
             md:p-2 md:px-4 md:text-base"
                   aria-label="Visit Theme Demo"
-                  href="https://dulcet-dodol-3ec821.netlify.app/"
+                  href="https://www.giftedhomesandapartments.com/"
                   target={"_blank"}
                 >
                   Visit Website
                 </Link>
                 <Link
-                  href="https://dulcet-dodol-3ec821.netlify.app/"
+                  href="https://github.com/rhunor/GHA1"
                   target={"_blank"}
                   className="w-10"
                   aria-label="github link"
@@ -107,7 +107,7 @@ export default function About() {
                   <GithubIcon />
                 </Link>
                 <Link
-                  href="https://dulcet-dodol-3ec821.netlify.app/"
+                  href="https://github.com/rhunor/GHA1"
                   target={"_blank"}
                   className="w-10"
                   aria-label="github link"
@@ -129,12 +129,12 @@ export default function About() {
               />
               <Image
                 className="h-auto w-full rounded-2xl"
-                src={proj2}
-                alt="Rhunor YouTube"
+                src={proj3}
+                alt="gifted homes and apartments"
                 sizes="(max-width: 768px) 100vw,
               (max-width: 1200px) 50vw,
               33vw"
-                priority
+                
               />
             </div>
           </div>

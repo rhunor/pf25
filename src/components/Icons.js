@@ -6,7 +6,7 @@ export const GithubIcon = ({ className, ...rest }) => (
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
-    <g id="SVGRepo_bgCarrier" stroke-width="0">
+    <g id="SVGRepo_bgCarrier" strokeWidth="0">
       <rect
         x="-2.4"
         y="-2.4"
@@ -19,14 +19,14 @@ export const GithubIcon = ({ className, ...rest }) => (
     </g>
     <g
       id="SVGRepo_tracerCarrier"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+       strokeLinecap="round"
+      strokeLinejoin="round"
     ></g>
     <g id="SVGRepo_iconCarrier">
       {" "}
       <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
+        fillRule="evenodd"
+        clipRule="evenodd"
         d="M20.9992 5.95846C21.0087 6.565 20.9333 7.32649 20.8658 7.8807C20.8395 8.09686 20.8037 8.27676 20.7653 8.42453C21.6227 10.01 22 11.9174 22 14C22 16.4684 20.8127 18.501 18.9638 19.8871C17.1319 21.2605 14.6606 22 12 22C9.33939 22 6.86809 21.2605 5.0362 19.8871C3.18727 18.501 2 16.4684 2 14C2 11.9174 2.37732 10.01 3.23472 8.42452C3.19631 8.27676 3.16055 8.09685 3.13422 7.8807C3.06673 7.32649 2.99133 6.565 3.00081 5.95846C3.01149 5.27506 3.10082 4.5917 3.19988 3.91379C3.24569 3.60028 3.31843 3.30547 3.65883 3.11917C4.00655 2.92886 4.37274 2.99981 4.73398 3.1021C5.95247 3.44713 7.09487 3.93108 8.16803 4.51287C9.2995 4.17287 10.5783 4 12 4C13.4217 4 14.7005 4.17287 15.832 4.51287C16.9051 3.93108 18.0475 3.44713 19.266 3.1021C19.6273 2.99981 19.9935 2.92886 20.3412 3.11917C20.6816 3.30547 20.7543 3.60028 20.8001 3.91379C20.8992 4.5917 20.9885 5.27506 20.9992 5.95846ZM20 14C20 12.3128 19.6122 10 17.5 10C16.5478 10 15.6474 10.2502 14.7474 10.5004C13.8482 10.7502 12.9495 11 12 11C11.0505 11 10.1518 10.7502 9.25263 10.5004C8.35261 10.2502 7.45216 10 6.5 10C4.39379 10 4 12.3197 4 14C4 15.7636 4.82745 17.231 6.23588 18.2869C7.66135 19.3556 9.69005 20 12 20C14.3099 20 16.3386 19.3555 17.7641 18.2869C19.1726 17.231 20 15.7636 20 14ZM10 14.5C10 15.8807 9.32843 17 8.5 17C7.67157 17 7 15.8807 7 14.5C7 13.1193 7.67157 12 8.5 12C9.32843 12 10 13.1193 10 14.5ZM15.5 17C16.3284 17 17 15.8807 17 14.5C17 13.1193 16.3284 12 15.5 12C14.6716 12 14 13.1193 14 14.5C14 15.8807 14.6716 17 15.5 17Z"
         fill="#000000"
       ></path>{" "}
@@ -57,7 +57,7 @@ export const LinkedInIcon = ({ className, ...rest }) => (
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
-    <g id="SVGRepo_bgCarrier" stroke-width="0">
+    <g id="SVGRepo_bgCarrier" strokeWidth="0">
       <rect
         x="-2.4"
         y="-2.4"
@@ -70,8 +70,8 @@ export const LinkedInIcon = ({ className, ...rest }) => (
     </g>
     <g
       id="SVGRepo_tracerCarrier"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+       strokeLinecap="round"
+      strokeLinejoin="round"
     ></g>
     <g id="SVGRepo_iconCarrier">
       {" "}
@@ -463,9 +463,9 @@ export const LinkArrow = ({ className, ...rest }) => (
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     stroke="#ffffff"
-    stroke-width="0.00024000000000000003"
+    strokeWidth="0.00024000000000000003"
   >
-    <g id="SVGRepo_bgCarrier" stroke-width="0">
+    <g id="SVGRepo_bgCarrier" strokeWidth="0">
       <rect
         x="0"
         y="0"
@@ -478,10 +478,10 @@ export const LinkArrow = ({ className, ...rest }) => (
     </g>
     <g
       id="SVGRepo_tracerCarrier"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+       strokeLinecap="round"
+      strokeLinejoin="round"
       stroke="#f5f5f5"
-      stroke-width="0.576"
+      strokeWidth="0.576"
     ></g>
     <g id="SVGRepo_iconCarrier">
       {" "}
@@ -498,7 +498,7 @@ export const MediumIcon = ({ className, ...rest }) => (
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
-    <g id="SVGRepo_bgCarrier" stroke-width="0">
+    <g id="SVGRepo_bgCarrier" strokeWidth="0">
       <rect
         x="-2.4"
         y="-2.4"
@@ -511,14 +511,14 @@ export const MediumIcon = ({ className, ...rest }) => (
     </g>
     <g
       id="SVGRepo_tracerCarrier"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+       strokeLinecap="round"
+      strokeLinejoin="round"
     ></g>
     <g id="SVGRepo_iconCarrier">
       {" "}
       <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
+        fillRule="evenodd"
+        clipRule="evenodd"
         d="M6 2C3.79086 2 2 3.79086 2 6V18C2 20.2091 3.79086 22 6 22H18C20.2091 22 22 20.2091 22 18V6C22 3.79086 20.2091 2 18 2H6ZM4 6C4 4.89543 4.89543 4 6 4H18C19.1046 4 20 4.89543 20 6V18C20 19.1046 19.1046 20 18 20H6C4.89543 20 4 19.1046 4 18V6ZM7 7C6.44772 7 6 7.44772 6 8C6 8.55228 6.44772 9 7 9V15C6.44772 15 6 15.4477 6 16C6 16.5523 6.44772 17 7 17H8H9C9.55228 17 10 16.5523 10 16C10 15.4477 9.55228 15 9 15V11.3028L11.1679 14.5547C11.3534 14.8329 11.6656 15 12 15C12.3344 15 12.6466 14.8329 12.8321 14.5547L15 11.3028V15C14.4477 15 14 15.4477 14 16C14 16.5523 14.4477 17 15 17H16H17C17.5523 17 18 16.5523 18 16C18 15.4477 17.5523 15 17 15V9C17.5523 9 18 8.55228 18 8C18 7.44772 17.5523 7 17 7H16C15.6656 7 15.3534 7.1671 15.1679 7.4453L12 12.1972L8.83205 7.4453C8.64658 7.1671 8.33435 7 8 7H7Z"
         fill="#000000"
       ></path>{" "}
@@ -532,7 +532,7 @@ export const DevIcon = ({ className, ...rest }) => (
     viewBox="-2.4 -2.4 28.80 28.80"
     xmlns="http://www.w3.org/2000/svg"
   >
-    <g id="SVGRepo_bgCarrier" stroke-width="0">
+    <g id="SVGRepo_bgCarrier" strokeWidth="0">
       <rect
         x="-2.4"
         y="-2.4"
@@ -545,8 +545,8 @@ export const DevIcon = ({ className, ...rest }) => (
     </g>
     <g
       id="SVGRepo_tracerCarrier"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+       strokeLinecap="round"
+      strokeLinejoin="round"
     ></g>
     <g id="SVGRepo_iconCarrier">
       <path d="M7.826 10.083a.784.784 0 0 0-.468-.175h-.701v4.198h.701a.786.786 0 0 0 .469-.175c.155-.117.233-.292.233-.525v-2.798c.001-.233-.079-.408-.234-.525zM19.236 3H4.764C3.791 3 3.002 3.787 3 4.76v14.48c.002.973.791 1.76 1.764 1.76h14.473c.973 0 1.762-.787 1.764-1.76V4.76A1.765 1.765 0 0 0 19.236 3zM9.195 13.414c0 .755-.466 1.901-1.942 1.898H5.389V8.665h1.903c1.424 0 1.902 1.144 1.903 1.899v2.85zm4.045-3.562H11.1v1.544h1.309v1.188H11.1v1.543h2.142v1.188h-2.498a.813.813 0 0 1-.833-.792V9.497a.813.813 0 0 1 .792-.832h2.539l-.002 1.187zm4.165 4.632c-.531 1.235-1.481.99-1.906 0l-1.548-5.818h1.309l1.193 4.569 1.188-4.569h1.31l-1.546 5.818z"></path>
