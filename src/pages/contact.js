@@ -1,180 +1,201 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Layout from "@/components/Layout";
 import Head from "next/head";
 import AnimatedText from "@/components/AnimatedText";
 import TransitionEffect from "@/components/TransitionEffect";
 import { useRouter } from "next/router";
 import emailjs from "@emailjs/browser";
+import Turnstile from "react-turnstile";
 
-// Netlify Form config
-
-export default function About() {
+export default function Contact() {
   const router = useRouter();
+  const formRef = useRef(null);
+  const turnstileRef = useRef(null);
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
   });
+
   const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState("idle"); // idle | success | error
+  const [errorMsg, setErrorMsg] = useState("");
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setFormData((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const myForm = e.target;
-    const formData = new FormData(myForm);
-    emailjs
-    .send(
-        
-      process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
-      process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
-      {
-        from_name: formData.get("name"),
+    setLoading(true);
+    setStatus("idle");
+    setErrorMsg("");
+
+    try {
+      const token = turnstileRef.current?.getResponse();
+
+      if (!token) {
+        throw new Error("Please complete the verification");
+      }
+
+      const templateParams = {
+        from_name: formData.name.trim(),
+        from_email: formData.email.trim(),
         to_name: "John Rhunor",
-        from_email: formData.get("email"),
-        to_email: "johnighoshemu@gmail.com",
-        message: formData.get("message"),
-      },
-      process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
-    )
-      .then(
-        async () => {
-          try {
-            const response = await fetch("/", {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/x-www-form-urlencoded",
-              },
-              body: new URLSearchParams(formData).toString(),
-            });
-      
-            if (response.ok) {
-              // Handle success, e.g., redirect to a thank you page
-              router.push("/thanks");
-            } else {
-              // Handle error
-              console.error("Form submission failed!", response);
-            }
-          } catch (error) {
-            // Handle error
-            console.error("An error occurred during form submission:", error);
-          }
-        }
+        message: formData.message.trim(),
+        "g-recaptcha-response": token, // helps EmailJS if you configured it
+      };
+
+      const response = await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
+        templateParams,
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
       );
+
+      if (response.status === 200) {
+        setStatus("success");
+        setFormData({ name: "", email: "", message: "" });
+        if (turnstileRef.current) turnstileRef.current.reset();
+        setTimeout(() => router.push("/thanks"), 1800);
+      } else {
+        throw new Error("Failed to send message");
+      }
+    } catch (err) {
+      console.error(err);
+      setStatus("error");
+      setErrorMsg(err.message || "Something went wrong — please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <>
       <Head>
-        <title>John Rhunor's Portfolio</title>
-        <meta
-          name="description"
-          content="John Rhunors Portolio website"
-        />
+        <title>Contact | John Rhunor</title>
+        <meta name="description" content="Get in touch with John Rhunor" />
       </Head>
 
       <TransitionEffect />
-      <main
-        className={`flex w-full flex-col items-center justify-center dark:text-light`}
-      >
+      <main className="flex w-full flex-col items-center justify-center dark:text-light">
         <Layout className="pt-16">
           <AnimatedText
-            text="Begin Today,
-I'm One Message Away 👋"
+            text="Begin Today, I'm One Message Away 👋"
             className="mb-16 !text-8xl !leading-tight lg:!text-7xl sm:!text-6xl xs:!text-4xl sm:mb-8"
           />
 
-          <div className="grid w-full grid-cols-8 gap-16 sm:gap-8 relative flex w-full flex-col items-center justify-center rounded-2xl rounded-br-2xl border border-solid border-dark bg-light p-6 shadow-2xl dark:border-light dark:bg-dark xs:p-4">
-            <div className="absolute top-0 -right-5 -z-10 h-[103%] w-[101.5%] rounded-[2rem] rounded-br-3xl bg-dark dark:bg-light md:-right-2 md:w-[101%] xs:h-[102%] xs:rounded-[1.5rem]" />
-            <div className="col-span-4 flex flex-col items-start justify-start xl:col-span-4 md:order-1 md:col-span-8">
-              <h2 className="my-4 text-2xl font-bold capitalize text-primaryDark dark:text-primaryDark">
-                What’s Next?
-              </h2>
+          <div className="relative flex w-full flex-col items-center justify-center rounded-2xl rounded-br-2xl border border-solid border-dark bg-light p-8 shadow-2xl dark:border-light dark:bg-dark xs:p-4">
+            <div className="absolute top-0 -right-5 -z-10 h-[103%] w-[101.5%] rounded-[2.5rem] rounded-br-3xl bg-dark dark:bg-light md:-right-2 md:w-[101%] xs:rounded-[1.5rem]" />
 
-              <div className="w-full"></div>
-              <p className="">
-                My inbox is always open. Whether you have a question or just
-                want to say hello, I'll try my best to get back to you! Feel
-                free to message me about any relevant project updates.
-              </p>
-            </div>
-            <div className="relative col-span-4 h-max xl:col-span-4 md:col-span-8 md:order-2">
-              <div className="grid w-full grid-cols-2 sm:gap-6 relative flex w-full flex-col items-center justify-center rounded-2xl rounded-br-2xl border  border-solid  border-dark bg-light p-6   dark:border-light dark:bg-dark xs:p-4">
-                <div className="col-span-8 h-max xl:col-span-6 md:col-span-8 md:order-2">
+            <div className="grid w-full grid-cols-8 gap-16 lg:gap-12 md:grid-cols-1 md:gap-10">
+              {/* Left side - intro text */}
+              <div className="col-span-4 flex flex-col items-start justify-start md:col-span-8 md:order-1">
+                <h2 className="mb-6 text-3xl font-bold capitalize text-primaryDark dark:text-primaryLight md:text-2xl">
+                  What’s Next?
+                </h2>
+                <p className="mb-4 text-lg leading-relaxed">
+                  My inbox is always open. Whether for a question, opportunity, collaboration, or just to say hi — feel free to reach out.
+                </p>
+                <p className="text-base text-dark/70 dark:text-light/70">
+                  Usually reply within 1–2 days.
+                </p>
+              </div>
+
+              {/* Right side - form */}
+              <div className="relative col-span-4 h-max md:col-span-8 md:order-2">
+                <div className="rounded-2xl border border-solid border-dark bg-light p-8 shadow-lg dark:border-light dark:bg-dark xs:p-6">
                   <form
+                    ref={formRef}
                     name="contact-form"
-                    method="POST"
                     onSubmit={handleSubmit}
+                    className="flex flex-col gap-5"
                   >
-                    <input
-                      type="hidden"
-                      name="form-name"
-                      value="contact-form"
-                    />
-                    <p className="hidden">
-                      <label>
-                        Name
-                        <input name="bot-field" />
+                    <input type="hidden" name="form-name" value="contact-form" />
+
+                    <div>
+                      <label className="mb-1 block text-sm font-medium text-dark dark:text-light">
+                        Your Name
                       </label>
-                    </p>
-                    <div className="col-span-1 p-2">
-                      <label className="block text-sm font-medium text-dark dark:text-light">
-                        Your Name:
-                        <input
-                          type="text"
-                          name="name"
-                          value={formData.name}
-                          required
-                          autoComplete="name"
-                          className="mt-1 p-2 w-full border border-solid border-dark rounded-md bg-light dark:border-light dark:bg-dark dark:text-light"
-                          onChange={handleChange}
-                        />
-                      </label>
+                      <input
+                        type="text"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleChange}
+                        required
+                        autoComplete="name"
+                        className="w-full rounded-md border border-dark/30 bg-light px-4 py-2.5 text-dark outline-none focus:border-primaryDark dark:border-light/30 dark:bg-dark dark:text-light dark:focus:border-primaryLight"
+                      />
                     </div>
 
-                    <div className="col-span-1 p-2">
-                      <label className="block text-sm font-medium text-dark/75 dark:text-light/75">
-                        Your Email:
-                        <input
-                          type="email"
-                          name="email"
-                          value={formData.email}
-                          required
-                          autoComplete="off"
-                          className="mt-1 p-2 w-full border border-solid border-dark rounded-md bg-light dark:border-light dark:bg-dark dark:text-light"
-                          onChange={handleChange}
-                        />
+                    <div>
+                      <label className="mb-1 block text-sm font-medium text-dark dark:text-light">
+                        Your Email
                       </label>
+                      <input
+                        type="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        required
+                        autoComplete="email"
+                        className="w-full rounded-md border border-dark/30 bg-light px-4 py-2.5 text-dark outline-none focus:border-primaryDark dark:border-light/30 dark:bg-dark dark:text-light dark:focus:border-primaryLight"
+                      />
                     </div>
 
-                    <div className="col-span-1 p-2">
-                      <label
-                        htmlFor="message"
-                        className="block text-sm font-medium text-dark/75 dark:text-light/75"
-                      >
-                        Message:
-                        <textarea
-                          name="message"
-                          value={formData.message}
-                          id="message"
-                          required
-                          rows="4"
-                          className="mt-1 p-2 w-full border border-solid border-dark rounded-md bg-light dark:border-light dark:bg-dark dark:text-light"
-                          onChange={handleChange}
-                        ></textarea>
+                    <div>
+                      <label className="mb-1 block text-sm font-medium text-dark dark:text-light">
+                        Message
                       </label>
+                      <textarea
+                        name="message"
+                        value={formData.message}
+                        onChange={handleChange}
+                        required
+                        rows={5}
+                        className="w-full rounded-md border border-dark/30 bg-light px-4 py-2.5 text-dark outline-none focus:border-primaryDark dark:border-light/30 dark:bg-dark dark:text-light dark:focus:border-primaryLight"
+                      />
                     </div>
 
-                    <div className="col-span-1 p-2">
-                      <button
-                        type="submit"
-                        className="px-4 py-2 font-bold capitalize text-light bg-dark border border-2 border-solid border-dark dark:border-light dark:bg-light rounded-md hover:bg-transparent hover:text-dark dark:hover:text-light dark:hover:bg-dark dark:hover:border-light dark:hover:bg-dark dark:text-dark dark:hover:text-light"
-                      >
-                        Send it!
-                      </button>
+                    {/* Turnstile (invisible captcha) */}
+                    <div className="flex justify-center py-3">
+                      <Turnstile
+                        ref={turnstileRef}
+                        sitekey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY}
+                        theme="auto"
+                        appearance="always"
+                        execution="execute"
+                        size="normal"
+                      />
                     </div>
+
+                    {status === "error" && (
+                      <p className="rounded-md bg-red-100 p-3 text-center text-red-700 dark:bg-red-900/30 dark:text-red-400">
+                        {errorMsg}
+                      </p>
+                    )}
+
+                    {status === "success" && (
+                      <p className="rounded-md bg-green-100 p-3 text-center text-green-700 dark:bg-green-900/30 dark:text-green-400">
+                        Message sent successfully! Redirecting...
+                      </p>
+                    )}
+
+                    <button
+                      type="submit"
+                      disabled={loading}
+                      className={`mt-2 rounded-md border-2 border-dark px-8 py-3 font-semibold uppercase tracking-wide transition disabled:opacity-50 dark:border-light ${
+                        loading
+                          ? "bg-dark/70 text-light dark:bg-light/70 dark:text-dark"
+                          : "bg-dark text-light hover:bg-transparent hover:text-dark dark:bg-light dark:text-dark dark:hover:bg-transparent dark:hover:text-light"
+                      }`}
+                    >
+                      {loading ? "Sending..." : "Send Message"}
+                    </button>
                   </form>
                 </div>
               </div>
@@ -185,4 +206,3 @@ I'm One Message Away 👋"
     </>
   );
 }
-
