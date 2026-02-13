@@ -3,10 +3,9 @@ import React, { useState } from "react";
 import Logo from "./Logo";
 import { useRouter } from "next/router";
 import {
-  MediumIcon,
-  DevIcon,
   GithubIcon,
   LinkedInIcon,
+  ResumeIcon,
   MoonIcon,
   SunIcon,
 } from "./Icons";
@@ -19,15 +18,15 @@ const CustomLink = ({ href, title, className = "" }) => {
   return (
     <Link
       href={href}
-      className={`${className}  rounded relative group lg:text-light lg:dark:text-dark`}
+      className={`${className} rounded relative group lg:text-light lg:dark:text-dark`}
     >
       {title}
       <span
         className={`
-              inline-block h-[1px]  bg-dark absolute left-0 -bottom-0.5 
+              inline-block h-[1px] bg-dark absolute left-0 -bottom-0.5
               group-hover:w-full transition-[width] ease duration-300 dark:bg-light
               ${
-                router.asPath === href ? "w-full" : " w-0"
+                router.asPath === href ? "w-full" : "w-0"
               } lg:bg-light lg:dark:bg-dark
               `}
       >
@@ -47,16 +46,16 @@ const CustomMobileLink = ({ href, title, className = "", toggle }) => {
 
   return (
     <button
-      className={`${className}  rounded relative group lg:text-light lg:dark:text-dark`}
+      className={`${className} rounded relative group lg:text-light lg:dark:text-dark`}
       onClick={handleClick}
     >
       {title}
       <span
         className={`
-              inline-block h-[1px]  bg-dark absolute left-0 -bottom-0.5 
+              inline-block h-[1px] bg-dark absolute left-0 -bottom-0.5
               group-hover:w-full transition-[width] ease duration-300 dark:bg-light
               ${
-                router.asPath === href ? "w-full" : " w-0"
+                router.asPath === href ? "w-full" : "w-0"
               } lg:bg-light lg:dark:bg-dark
               `}
       >
@@ -82,7 +81,7 @@ const Navbar = () => {
     >
       <button
         type="button"
-        className=" flex-col items-center justify-center hidden lg:flex z-9"
+        className="flex-col items-center justify-center hidden lg:flex z-9"
         aria-controls="mobile-menu"
         aria-expanded={isOpen}
         onClick={handleClick}
@@ -110,12 +109,9 @@ const Navbar = () => {
           <CustomLink className="mr-4" href="/" title="Home" />
           <CustomLink className="mx-4" href="/about" title="About" />
           <CustomLink className="mx-4" href="/projects" title="Projects" />
-          {/* <CustomLink className="ml-4" href="/articles" title="Articles" /> */}
+          <CustomLink className="ml-4" href="/contact" title="Contact" />
         </nav>
-        <nav
-          className="flex items-center justify-center flex-wrap lg:mt-2
-      "
-        >
+        <nav className="flex items-center justify-center flex-wrap lg:mt-2">
           <motion.a
             target={"_blank"}
             className="w-7 mr-3"
@@ -133,35 +129,27 @@ const Navbar = () => {
             href="https://www.linkedin.com/in/john-rhunor-ighoshemu-7979a8214"
             whileHover={{ y: -2 }}
             whileTap={{ scale: 0.9 }}
-            aria-label="Checkout my Linkedin profile"
+            aria-label="Checkout my LinkedIn profile"
           >
             <LinkedInIcon />
           </motion.a>
 
-          {/* <motion.a
-            target={"_blank"}
-            className="w-7 mx-3"
-            href="https://dev.to/lilxyzz"
-            whileHover={{ y: -2 }}
-            whileTap={{ scale: 0.9 }}
-            aria-label="Checkout my Dev.to profile"
-          >
-            <DevIcon />
-          </motion.a>
-
           <motion.a
-            target={"_blank"}
+            href="/engr-john-rhunor-resume.pdf"
+            download
             className="w-7 mx-3"
-            href="https://dev.to/lilxyzz"
             whileHover={{ y: -2 }}
             whileTap={{ scale: 0.9 }}
-            aria-label="My Dev.to profile"
-          ></motion.a> */}
+            aria-label="Download my resume"
+            title="Download Resume"
+          >
+            <ResumeIcon />
+          </motion.a>
 
           <button
             onClick={() => setMode(mode === "light" ? "dark" : "light")}
-            className={`w-7 h-7 ease ml-3 flex items-center justify-center rounded-full p-1  
-            ${mode === "light" ? "bg-dark  text-light" : "bg-light  text-dark"}
+            className={`w-7 h-7 ease ml-3 flex items-center justify-center rounded-full p-1
+            ${mode === "light" ? "bg-dark text-light" : "bg-light text-dark"}
             `}
             aria-label="theme-switcher"
           >
@@ -185,39 +173,30 @@ const Navbar = () => {
           <nav className="flex items-center justify-center flex-col">
             <CustomMobileLink
               toggle={handleClick}
-              className="mr-4 lg:m-0 lg:my-2"
+              className="lg:m-0 lg:my-2"
               href="/"
               title="Home"
             />
             <CustomMobileLink
               toggle={handleClick}
-              className="mx-4 lg:m-0 lg:my-2"
+              className="lg:m-0 lg:my-2"
               href="/about"
               title="About"
             />
             <CustomMobileLink
               toggle={handleClick}
-              className="mx-4 lg:m-0 lg:my-2"
+              className="lg:m-0 lg:my-2"
               href="/projects"
               title="Projects"
             />
-            {/* <CustomMobileLink
-              toggle={handleClick}
-              className="ml-4 lg:m-0 lg:my-2"
-              href="/articles"
-              title="Articles"
-            /> */}
             <CustomMobileLink
               toggle={handleClick}
-              className="ml-4 lg:m-0 lg:my-2"
+              className="lg:m-0 lg:my-2"
               href="/contact"
               title="Contact"
             />
           </nav>
-          <nav
-            className="flex items-center justify-center  mt-2
-      "
-          >
+          <nav className="flex items-center justify-center mt-2">
             <motion.a
               target={"_blank"}
               className="w-6 mr-3"
@@ -235,33 +214,27 @@ const Navbar = () => {
               href="https://www.linkedin.com/in/john-rhunor-ighoshemu-7979a8214"
               whileHover={{ y: -2 }}
               whileTap={{ scale: 0.9 }}
-              aria-label="Checkout my Linkedin profile"
+              aria-label="Checkout my LinkedIn profile"
             >
               <LinkedInIcon />
             </motion.a>
-            {/* <motion.a
-              target={"_blank"}
+
+            <motion.a
+              href="/engr-john-rhunor-resume.pdf"
+              download
               className="w-6 mx-3"
-              href="https://dev.to/lilxyzz"
               whileHover={{ y: -2 }}
               whileTap={{ scale: 0.9 }}
-              aria-label="Checkout my Dev.to profile"
+              aria-label="Download my resume"
+              title="Download Resume"
             >
-              <DevIcon />
-            </motion.a> */}
-            {/* <motion.a
-              target={"_blank"}
-              className="w-6 mx-3"
-              href="https://dev.to/lilxyzz"
-              whileHover={{ y: -2 }}
-              whileTap={{ scale: 0.9 }}
-              aria-label="My Dev.to profile"
-            ></motion.a> */}
+              <ResumeIcon />
+            </motion.a>
 
             <button
               onClick={() => setMode(mode === "light" ? "dark" : "light")}
-              className={`w-6 h-6 ease m-1 ml-3 sm:mx-1 flex items-center justify-center rounded-full p-1  
-            ${mode === "light" ? "bg-dark  text-light" : "bg-light  text-dark"}
+              className={`w-6 h-6 ease m-1 ml-3 sm:mx-1 flex items-center justify-center rounded-full p-1
+            ${mode === "light" ? "bg-dark text-light" : "bg-light text-dark"}
             `}
               aria-label="theme-switcher"
             >
@@ -275,7 +248,7 @@ const Navbar = () => {
         </motion.div>
       ) : null}
 
-      <div className="absolute left-[50%] top-2 translate-x-[-50%] ">
+      <div className="absolute left-[50%] top-2 translate-x-[-50%]">
         <Logo />
       </div>
     </header>

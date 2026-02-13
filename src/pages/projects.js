@@ -11,6 +11,7 @@ import youtube from "../../public/images/projects/youtube.png";
 import gha from "/public/images/projects/gha.png";
 import oliveHausSite from "/public/images/projects/olivehauswebsite.png";
 import oliveHausPMA from "/public/images/projects/olivehauspma1.png";
+import primetrex from "/public/images/projects/primetrex.png";
 
 const FramerImage = motion(Image);
 
@@ -93,6 +94,16 @@ export default function Projects() {
           />
 
           <div className="grid grid-cols-12 gap-10 lg:gap-8 md:gap-6">
+
+            <div className="col-span-6 md:col-span-12">
+              <ProjectCard
+                type="Full-Stack Web Application"
+                tools="Next.js | Telegram Bot API | Payment Integration"
+                title="Primetrex"
+                img={primetrex}
+                link="/projects/primetrex"
+              />
+            </div>
 
             <div className="col-span-6 md:col-span-12">
               <ProjectCard

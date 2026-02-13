@@ -526,6 +526,44 @@ export const MediumIcon = ({ className, ...rest }) => (
   </svg>
 );
 
+export const ResumeIcon = ({ className, ...rest }) => (
+  <svg
+    viewBox="-2.4 -2.4 28.80 28.80"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...rest}
+    className={`w-full h-auto ${className}`}
+  >
+    <g id="SVGRepo_bgCarrier" strokeWidth="0">
+      <rect
+        x="-2.4"
+        y="-2.4"
+        width="28.80"
+        height="28.80"
+        rx="14.4"
+        fill="#f5f5f5"
+        strokeWidth="0"
+      />
+    </g>
+    <g id="SVGRepo_iconCarrier">
+      <path
+        d="M12 16L12 8M12 16L9 13M12 16L15 13"
+        stroke="#000000"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M9 22H15C18.3137 22 20 20.3137 20 17V7C20 3.68629 18.3137 2 15 2H9C5.68629 2 4 3.68629 4 7V17C4 20.3137 5.68629 22 9 22Z"
+        stroke="#000000"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </g>
+  </svg>
+);
+
 export const DevIcon = ({ className, ...rest }) => (
   <svg
     fill="#000000"
