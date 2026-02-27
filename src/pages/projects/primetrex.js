@@ -12,10 +12,10 @@ export default function Primetrex() {
   return (
     <>
       <Head>
-        <title>Primetrex | John Rhunor</title>
+        <title>Primetrex Affiliate System | John Rhunor</title>
         <meta
           name="description"
-          content="Primetrex is a full-stack affiliate platform for a professional copy trading service, featuring Telegram bot integration and payment processing."
+          content="Primetrex Affiliate System is a full-stack affiliate web application for a professional copy trading service, featuring Telegram bot integration and payment processing."
         />
       </Head>
 
@@ -25,7 +25,7 @@ export default function Primetrex() {
       >
         <Layout className="pt-16">
           <AnimatedText
-            text="Primetrex"
+            text="Primetrex Affiliate System"
             className="mb-16 !text-8xl !leading-tight lg:!text-7xl sm:!text-6xl xs:!text-4xl sm:mb-8"
           />
 
@@ -35,7 +35,7 @@ export default function Primetrex() {
             md:col-span-8"
             >
               <h2 className="mb-4 text-2xl font-bold capitalize text-dark/75 dark:text-light/75">
-                Primetrex — Copy Trading Affiliate Platform
+                Primetrex Affiliate System — Copy Trading Web Application
               </h2>
               <h3 className="mb-4 text-lg font-bold text-primary dark:text-primaryDark">
                 Full-Stack Development | Telegram Bot Integration | Payment Processing
@@ -53,8 +53,8 @@ export default function Primetrex() {
                     border-2 border-solid capitalize text-light hover:border-dark hover:bg-transparent hover:text-dark
                     dark:bg-light dark:text-dark dark:hover:border-light dark:hover:bg-dark dark:hover:text-light
                     md:p-2 md:px-4 md:text-base"
-                  aria-label="Visit Primetrex"
-                  href="https://primetrex.vercel.app/"
+                  aria-label="Visit Primetrex Affiliate System"
+                  href="https://primetrexaffiliates.com/"
                   target={"_blank"}
                 >
                   Visit Website

@@ -1,32 +1,45 @@
 import Link from "next/link";
 import React from "react";
-import Image from "next/image";
-import CText from "../../public/images/CircularText.png";
 
 export const HireMe = () => {
   return (
-    <div
-      className="fixed left-4 bottom-4 flex flex-col items-center justify-center md:right-8 sm:right-0 
-    overflow-hidden md:bottom-auto md:left-auto md:top-0 md:absolute"
-    >
-      <div className="HireMe w-full h-full flex items-center justify-center md:w-24">
-        <Image
-          priority={false}
-          src={CText}
-          alt="HireMe image"
-          height={160}
-          width={160}
-          className={"fill-dark dark:fill-light animate-spin-slow duration-200"}
-        />
+    <div className="fixed left-4 bottom-4 z-10 md:hidden">
+      <div className="relative flex items-center justify-center w-40 h-40">
 
+        {/* Spinning SVG circular text */}
+        <svg
+          viewBox="0 0 150 150"
+          className="animate-spin-slow absolute inset-0 w-full h-full"
+          aria-hidden="true"
+        >
+          <defs>
+            <path
+              id="hireMeCircle"
+              d="M 75,75 m -58,0 a 58,58 0 1,1 116,0 a 58,58 0 1,1 -116,0"
+            />
+          </defs>
+          <text
+            className="fill-dark dark:fill-light"
+            style={{ fontSize: "11px", fontFamily: "var(--font-dm-sans)", letterSpacing: "0.08em", fontWeight: 500 }}
+          >
+            <textPath href="#hireMeCircle" textLength="364">
+              HIRE ME • GET IN TOUCH • LET'S WORK •{" "}
+            </textPath>
+          </text>
+        </svg>
+
+        {/* Center button */}
         <Link
           href="/contact"
-          className="flex items-center justify-center absolute left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] border border-solid
-bg-dark rounded-full text-white w-16 h-16 text-[14px] font-semibold hover:bg-light hover:border-dark hover:text-dark dark:text-dark dark:bg-light dark:hover:bg-dark
-dark:hover:text-light dark:hover:border-light  md:w-12 md:h-12 md:text-[10px]
-"
+          aria-label="Contact me — visit the contact page"
+          className="flex items-center justify-center w-16 h-16 rounded-full text-[13px] font-semibold
+            bg-primary text-light border-2 border-solid border-primary
+            hover:bg-transparent hover:text-primary
+            dark:bg-primaryDark dark:text-dark dark:border-primaryDark
+            dark:hover:bg-transparent dark:hover:text-primaryDark
+            transition-colors duration-200 z-10"
         >
-          Let's Go
+          Hire Me
         </Link>
       </div>
     </div>

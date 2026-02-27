@@ -99,7 +99,7 @@ export default function Projects() {
               <ProjectCard
                 type="Full-Stack Web Application"
                 tools="Next.js | Telegram Bot API | Payment Integration"
-                title="Primetrex"
+                title="Primetrex Affiliate System"
                 img={primetrex}
                 link="/projects/primetrex"
               />

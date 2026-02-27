@@ -41,7 +41,7 @@ export default function About() {
         <title>About John Rhunor</title>
         <meta
           name="description"
-          content="John Rhunors Portfolio website"
+          content="About John Rhunor Ighoshemu — Mechanical Engineer, Oil Chemical Consultant, and Full-Stack Web Developer."
         />
       </Head>
 
@@ -88,7 +88,7 @@ I’m passionate about cybersecurity and cloud computing, constantly exploring t
                 className="h-auto w-full rounded-2xl border-2 border-solid border-dark"
                 priority={true}
                 src={profile}
-                alt="Travis Lord"
+                alt="John Rhunor Ighoshemu — Mechanical Engineer and Web Developer"
                 sizes="(max-width: 768px) 100vw,
               (max-width: 1200px) 50vw,
               33vw"
