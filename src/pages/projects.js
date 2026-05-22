@@ -12,6 +12,8 @@ import gha from "/public/images/projects/gha.png";
 import oliveHausSite from "/public/images/projects/olivehauswebsite.png";
 import oliveHausPMA from "/public/images/projects/olivehauspma1.png";
 import primetrex from "/public/images/projects/primetrex.png";
+import averisWebsite from "/public/images/projects/averiswebsite.png";
+import averisAffiliate from "/public/images/projects/averisaffiliate.png";
 
 const FramerImage = motion(Image);
 
@@ -142,6 +144,26 @@ export default function Projects() {
                 title="Gifted Homes & Apartments"
                 img={gha}
                 link="/projects/giftedhomes"
+              />
+            </div>
+
+            <div className="col-span-6 md:col-span-12">
+              <ProjectCard
+                type="Web Development"
+                tools="Next.js | TypeScript | Framer Motion | Lenis"
+                title="Averis Academy Website"
+                img={averisWebsite}
+                link="/projects/averis-academy-website"
+              />
+            </div>
+
+            <div className="col-span-6 md:col-span-12">
+              <ProjectCard
+                type="Full-Stack Application"
+                tools="Next.js | TypeScript | MongoDB | Telegram Bot | Cloudinary"
+                title="Averis Academy Platform"
+                img={averisAffiliate}
+                link="/projects/averis-academy-affiliate"
               />
             </div>
 
