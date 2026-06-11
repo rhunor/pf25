@@ -12,8 +12,8 @@ import gha from "/public/images/projects/gha.png";
 import oliveHausSite from "/public/images/projects/olivehauswebsite.png";
 import oliveHausPMA from "/public/images/projects/olivehauspma1.png";
 import primetrex from "/public/images/projects/primetrex.png";
-import averisWebsite from "/public/images/projects/averiswebsite.png";
-import averisAffiliate from "/public/images/projects/averisaffiliate.png";
+import averisWebsite from "/public/images/projects/averiswebsite1.png";
+import averisAffiliate from "/public/images/projects/averisaffiliate1.png";
 
 const FramerImage = motion(Image);
 

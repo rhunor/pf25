@@ -6,7 +6,7 @@ import AnimatedText from "@/components/AnimatedText";
 import TransitionEffect from "@/components/TransitionEffect";
 import { GithubIcon } from "@/components/Icons";
 
-import averisAffiliateImg from "/public/images/projects/averisaffiliate.png";
+import averisAffiliateImg from "/public/images/projects/averisaffiliate1.png";
 
 export default function AverisAcademyAffiliate() {
   return (
