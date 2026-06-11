@@ -7,7 +7,6 @@ import TransitionEffect from "@/components/TransitionEffect";
 import { motion } from "framer-motion";
 
 // Project Images
-import youtube from "../../public/images/projects/youtube.png";
 import gha from "/public/images/projects/gha.png";
 import oliveHausSite from "/public/images/projects/olivehauswebsite.png";
 import oliveHausPMA from "/public/images/projects/olivehauspma1.png";
@@ -120,30 +119,10 @@ export default function Projects() {
             <div className="col-span-6 md:col-span-12">
               <ProjectCard
                 type="Full-Stack Application"
-                tools="Next.js | TypeScript | Realtime Features"
-                title="OliveHaus Daily Manager"
-                img={oliveHausPMA}
-                link="/projects/olivehaus-daily-manager"
-              />
-            </div>
-
-            <div className="col-span-6 md:col-span-12">
-              <ProjectCard
-                type="Design & Development"
-                tools="Next | React | Tailwind"
-                title="RhunorTube"
-                img={youtube}
-                link="/projects/rhunortube"
-              />
-            </div>
-
-            <div className="col-span-6 md:col-span-12">
-              <ProjectCard
-                type="Design & Development"
-                tools="Next | React | Tailwind"
-                title="Gifted Homes & Apartments"
-                img={gha}
-                link="/projects/giftedhomes"
+                tools="Next.js | TypeScript | MongoDB | Telegram Bot | Cloudinary"
+                title="Averis Academy Platform"
+                img={averisAffiliate}
+                link="/projects/averis-academy-affiliate"
               />
             </div>
 
@@ -159,11 +138,21 @@ export default function Projects() {
 
             <div className="col-span-6 md:col-span-12">
               <ProjectCard
+                type="Design & Development"
+                tools="Next | React | Tailwind"
+                title="Gifted Homes & Apartments"
+                img={gha}
+                link="/projects/giftedhomes"
+              />
+            </div>
+
+            <div className="col-span-6 md:col-span-12">
+              <ProjectCard
                 type="Full-Stack Application"
-                tools="Next.js | TypeScript | MongoDB | Telegram Bot | Cloudinary"
-                title="Averis Academy Platform"
-                img={averisAffiliate}
-                link="/projects/averis-academy-affiliate"
+                tools="Next.js | TypeScript | Realtime Features"
+                title="OliveHaus Daily Manager"
+                img={oliveHausPMA}
+                link="/projects/olivehaus-daily-manager"
               />
             </div>
 
