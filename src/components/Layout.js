@@ -1,14 +1,8 @@
 import React from "react";
 
+// Centered content column with consistent side gutters.
 const Layout = ({ children, className = "" }) => {
-  return (
-    <div
-      className={`z-0 inline-block h-full w-full bg-light p-32 dark:bg-dark xl:p-24 lg:p-16 
-      md:p-12 sm:p-8 ${className}`}
-    >
-      {children}
-    </div>
-  );
+  return <div className={`mx-auto w-full max-w-6xl px-10 lg:px-8 sm:px-5 ${className}`}>{children}</div>;
 };
 
 export default Layout;

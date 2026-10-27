@@ -10,7 +10,6 @@ import Layout from "@/components/Layout";
 import Link from "next/link";
 import { useRef } from "react";
 import TransitionEffect from "@/components/TransitionEffect";
-import { HireMe2 } from "@/components/HireMe2";
 
 const FramerImage = motion(Image);
 
@@ -203,7 +202,6 @@ export default function Articles() {
               View Projects
             </Link>
           </div>
-          <HireMe2 />
         </Layout>
       </main>
     </>

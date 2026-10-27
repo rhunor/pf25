@@ -1,162 +1,92 @@
-import AnimatedText from "@/components/AnimatedText";
 import Layout from "@/components/Layout";
 import Head from "next/head";
-import Image from "next/image";
-import Link from "next/link";
+import { useState } from "react";
 import TransitionEffect from "@/components/TransitionEffect";
-import { motion } from "framer-motion";
+import ProjectCard from "@/components/ProjectCard";
+import { Eyebrow, Reveal } from "@/components/ui";
+import { motion, AnimatePresence } from "framer-motion";
+import { projects } from "@/data/projects";
 
-// Project Images
-import gha from "/public/images/projects/gha.png";
-import oliveHausSite from "/public/images/projects/olivehauswebsite.png";
-import oliveHausPMA from "/public/images/projects/olivehauspma1.png";
-import primetrex from "/public/images/projects/primetrex.png";
-import averisWebsite from "/public/images/projects/averiswebsite1.png";
-import averisAffiliate from "/public/images/projects/averisaffiliate1.png";
-
-const FramerImage = motion(Image);
-
-const ProjectCard = ({ title, type, img, link, tools }) => {
-  return (
-    <motion.article
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6 }}
-      viewport={{ once: true }}
-      className="flex flex-col items-center justify-center
-      bg-neutral-50 dark:bg-neutral-900
-      border border-neutral-200/40 dark:border-neutral-800
-      shadow-lg shadow-black/5
-      rounded-2xl p-6
-      hover:shadow-xl transition-all duration-300"
-    >
-      <Link href={link} className="w-full cursor-pointer overflow-hidden rounded-lg">
-        <FramerImage
-          src={img}
-          alt={title}
-          className="w-full h-auto"
-          whileHover={{ scale: 1.03 }}
-          transition={{ duration: 0.3 }}
-          sizes="(max-width: 768px) 100vw,
-                 (max-width: 1200px) 50vw,
-                 33vw"
-        />
-      </Link>
-
-      <div className="mt-4 w-full">
-        <span className="text-md font-medium text-primary dark:text-primaryDark">
-          {type}
-        </span>
-
-        <span className="text-md font-medium text-secondary dark:text-secondaryDark block">
-          {tools}
-        </span>
-
-        <Link href={link}>
-          <h3 className="mt-2 text-2xl font-bold underline-offset-2 hover:underline">
-            {title}
-          </h3>
-        </Link>
-
-        <Link
-          href={link}
-          className="mt-3 inline-block px-4 py-2
-          bg-dark text-light rounded-lg
-          hover:bg-transparent hover:text-dark
-          border-2 border-solid border-dark
-          dark:bg-light dark:text-dark
-          dark:hover:bg-dark dark:hover:text-light"
-        >
-          View Project
-        </Link>
-      </div>
-    </motion.article>
-  );
-};
+const FILTERS = [
+  { id: "all", label: "All" },
+  { id: "platform", label: "Full-stack platforms" },
+  { id: "website", label: "Websites" },
+];
 
 export default function Projects() {
+  const [filter, setFilter] = useState("all");
+  const shown = projects.filter((p) => filter === "all" || p.category === filter);
+
   return (
     <>
       <Head>
-        <title>Projects | By John Rhunor</title>
+        <title>Projects | John Rhunor</title>
         <meta
           name="description"
-          content="A curated collection of professional web applications and digital products built by John Rhunor."
+          content="Full-stack platforms and websites built by John Rhunor: Reallow, Primetrex, Averis Academy, OliveHaus and more."
         />
       </Head>
 
       <TransitionEffect />
 
-      <main className="flex flex-col items-center justify-center dark:text-light mb-16">
-        <Layout className="pt-16">
-          <AnimatedText
-            text="Imagination Transforms the World ✨"
-            className="mb-16 !text-7xl lg:!text-6xl md:!text-5xl sm:!text-4xl xs:!text-3xl"
-          />
+      <main id="content">
+        <section className="relative -mt-[76px] overflow-hidden pt-[76px]">
+          <div className="blueprint pointer-events-none absolute inset-0" aria-hidden="true" />
+          <Layout className="relative pb-12 pt-20 md:pt-12">
+            <Reveal>
+              <Eyebrow index={String(projects.length).padStart(2, "0")}>Projects</Eyebrow>
+              <h1 className="mt-4 max-w-3xl font-heading text-6xl font-semibold leading-[1.04] tracking-tight lg:text-5xl sm:text-4xl">
+                Production work, <span className="text-dark/45 dark:text-light/45">built for real users and real money.</span>
+              </h1>
+              <p className="mt-5 max-w-2xl text-lg text-dark/70 dark:text-light/70 sm:text-base">
+                Each project has a short case study: what it does, how it&apos;s built, and the engineering decisions that matter.
+              </p>
+            </Reveal>
 
-          <div className="grid grid-cols-12 gap-10 lg:gap-8 md:gap-6">
-
-            <div className="col-span-6 md:col-span-12">
-              <ProjectCard
-                type="Full-Stack Web Application"
-                tools="Next.js | Telegram Bot API | Payment Integration"
-                title="Primetrex Affiliate System"
-                img={primetrex}
-                link="/projects/primetrex"
-              />
+            <div className="mt-10 flex flex-wrap gap-2" role="group" aria-label="Filter projects">
+              {FILTERS.map((f) => {
+                const count = projects.filter((p) => f.id === "all" || p.category === f.id).length;
+                const active = filter === f.id;
+                return (
+                  <button
+                    key={f.id}
+                    onClick={() => setFilter(f.id)}
+                    aria-pressed={active}
+                    className={`rounded-full border px-4 py-1.5 text-sm transition-colors ${
+                      active
+                        ? "border-dark bg-dark text-light dark:border-light dark:bg-light dark:text-dark"
+                        : "border-dark/15 text-dark/70 hover:border-dark/40 dark:border-light/15 dark:text-light/70 dark:hover:border-light/40"
+                    }`}
+                  >
+                    {f.label} <span className="ml-1 font-mono text-xs opacity-60">{count}</span>
+                  </button>
+                );
+              })}
             </div>
+          </Layout>
+        </section>
 
-            <div className="col-span-6 md:col-span-12">
-              <ProjectCard
-                type="Full-Stack Web Development"
-                tools="Next.js | TypeScript | MongoDB | Cloudinary"
-                title="OliveHaus Interiors Website"
-                img={oliveHausSite}
-                link="/projects/olivehaus-website"
-              />
-            </div>
-
-            <div className="col-span-6 md:col-span-12">
-              <ProjectCard
-                type="Full-Stack Application"
-                tools="Next.js | TypeScript | MongoDB | Telegram Bot | Cloudinary"
-                title="Averis Academy Platform"
-                img={averisAffiliate}
-                link="/projects/averis-academy-affiliate"
-              />
-            </div>
-
-            <div className="col-span-6 md:col-span-12">
-              <ProjectCard
-                type="Web Development"
-                tools="Next.js | TypeScript | Framer Motion | Lenis"
-                title="Averis Academy Website"
-                img={averisWebsite}
-                link="/projects/averis-academy-website"
-              />
-            </div>
-
-            <div className="col-span-6 md:col-span-12">
-              <ProjectCard
-                type="Design & Development"
-                tools="Next | React | Tailwind"
-                title="Gifted Homes & Apartments"
-                img={gha}
-                link="/projects/giftedhomes"
-              />
-            </div>
-
-            <div className="col-span-6 md:col-span-12">
-              <ProjectCard
-                type="Full-Stack Application"
-                tools="Next.js | TypeScript | Realtime Features"
-                title="OliveHaus Daily Manager"
-                img={oliveHausPMA}
-                link="/projects/olivehaus-daily-manager"
-              />
-            </div>
-
-          </div>
+        <Layout>
+          <motion.div layout className="grid grid-cols-2 gap-6 md:grid-cols-1">
+            <AnimatePresence mode="popLayout" initial={false}>
+              {shown.map((p, i) => {
+                const featured = p.slug === "reallow";
+                return (
+                  <motion.div
+                    key={p.slug}
+                    layout
+                    initial={{ opacity: 0, scale: 0.98 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.98 }}
+                    transition={{ duration: 0.25 }}
+                    className={featured ? "col-span-2 md:col-span-1" : ""}
+                  >
+                    <ProjectCard project={p} index={String(projects.indexOf(p) + 1).padStart(2, "0")} featured={featured} priority={i < 2} />
+                  </motion.div>
+                );
+              })}
+            </AnimatePresence>
+          </motion.div>
         </Layout>
       </main>
     </>

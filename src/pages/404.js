@@ -1,30 +1,34 @@
-import AnimatedText from "@/components/AnimatedText";
 import Layout from "@/components/Layout";
 import TransitionEffect from "@/components/TransitionEffect";
 import Head from "next/head";
-import Link from "next/link";
+import dynamic from "next/dynamic";
 import React from "react";
+import { Button, Eyebrow } from "@/components/ui";
+
+const Scene3D = dynamic(() => import("@/components/Scene3D"), { ssr: false });
 
 const NotFound = () => {
   return (
     <>
       <Head>
-        <title>John Rhunor portfolio website | 404 Page </title>
+        <title>404: Page not found | John Rhunor</title>
       </Head>
       <TransitionEffect />
-      <main className="h-[100vh] w-full dark:bg-dark ">
-        <Layout className="relative !bg-transparent !pt-16 flex flex-col items-center justify-center">
-          <AnimatedText text="404" className=" " />
-          <AnimatedText text="Page Not Found." className=" !text-7xl " />
-          <Link
-            href="/"
-            className="self-center !mt-4 inline-block rounded-lg border-2 border-solid bg-dark px-4 py-2
-        font-semibold text-light hover:border-dark hover:bg-light hover:text-dark 
-        dark:bg-light dark:text-dark hover:dark:bg-dark hover:dark:text-light hover:dark:border-light
-        "
-          >
-            Go To Home
-          </Link>
+      <main id="content" className="relative -mt-[76px] overflow-hidden pt-[76px]">
+        <div className="blueprint pointer-events-none absolute inset-0" aria-hidden="true" />
+        <Layout className="relative flex min-h-[70vh] flex-col items-center justify-center text-center">
+          <div className="h-40 w-40">
+            <Scene3D mesh="gear" speed={0.6} tilt={0.5} interactive label="Spinning gear" />
+          </div>
+          <Eyebrow className="mt-6">Error 404 · part not found</Eyebrow>
+          <h1 className="mt-3 font-heading text-5xl font-semibold tracking-tight sm:text-4xl">This page isn&apos;t in the assembly.</h1>
+          <p className="mt-4 max-w-md text-dark/65 dark:text-light/65">The link may be old, or the page was moved during the redesign.</p>
+          <div className="mt-8 flex flex-wrap justify-center gap-3">
+            <Button href="/">Back to home</Button>
+            <Button href="/projects" variant="secondary">
+              View projects
+            </Button>
+          </div>
         </Layout>
       </main>
     </>

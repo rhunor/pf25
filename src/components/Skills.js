@@ -1,94 +1,60 @@
-import { motion } from "framer-motion";
 import React from "react";
+import { Reveal, SectionHeading } from "./ui";
 
 const skillCategories = [
   {
+    code: "FE",
     title: "Frontend",
     skills: ["React", "Next.js", "TypeScript", "JavaScript", "HTML", "Tailwind CSS"],
   },
   {
+    code: "BE",
     title: "Backend",
     skills: ["Node.js", "Express", "MongoDB", "PostgreSQL", "Spring Boot"],
   },
   {
+    code: "OPS",
     title: "Tools & DevOps",
     skills: ["Git", "Docker", "Solidity", "Rust", "Java", "REST APIs"],
   },
   {
+    code: "ENG",
     title: "Engineering",
     skills: ["AutoCAD", "MATLAB", "Aspen HYSYS", "P&ID", "Mechanical Diagnostics", "QA/QC"],
   },
 ];
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.15,
-    },
-  },
-};
-
-const categoryVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, ease: "easeOut" },
-  },
-};
-
-const skillVariants = {
-  hidden: { opacity: 0, scale: 0.8 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    transition: { duration: 0.3 },
-  },
-};
-
 const Skills = () => {
   return (
-    <>
-      <h2 className="font-bold text-8xl mt-64 w-full text-center font-heading md:text-6xl md:mt-32">
-        Skills
-      </h2>
-      <motion.div
-        className="w-full mt-16 mb-64 md:mb-32 grid grid-cols-2 gap-8 md:grid-cols-1 md:gap-6"
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
-      >
-        {skillCategories.map((category) => (
-          <motion.div
+    <section className="mt-28 md:mt-20" aria-labelledby="skills-heading">
+      <SectionHeading index="02" eyebrow="Toolkit" title={<span id="skills-heading">Skills</span>} />
+      <div className="grid grid-cols-2 overflow-hidden rounded-2xl border border-dark/10 dark:border-light/10 md:grid-cols-1">
+        {skillCategories.map((category, i) => (
+          <Reveal
             key={category.title}
-            variants={categoryVariants}
-            className="rounded-2xl border border-dark/10 dark:border-light/10 bg-light dark:bg-dark p-8 md:p-6
-              shadow-lg shadow-black/5 dark:shadow-white/5 hover:shadow-xl transition-shadow duration-300"
+            delay={i * 0.05}
+            className={`bg-paper p-7 dark:bg-ink md:p-5 ${i % 2 ? "border-l border-dark/10 dark:border-light/10 md:border-l-0" : ""} ${
+              i > 1 ? "border-t border-dark/10 dark:border-light/10" : ""
+            } ${i > 0 ? "md:border-t" : ""}`}
           >
-            <h3 className="text-xl font-bold mb-6 text-primary dark:text-primaryDark font-heading">
-              {category.title}
-            </h3>
-            <div className="flex flex-wrap gap-3">
+            <div className="flex items-baseline justify-between">
+              <h3 className="font-heading text-lg font-semibold">{category.title}</h3>
+              <span className="font-mono text-[11px] text-primary dark:text-primaryDark">{category.code}</span>
+            </div>
+            <ul className="mt-4 flex flex-wrap gap-2">
               {category.skills.map((skill) => (
-                <motion.span
+                <li
                   key={skill}
-                  variants={skillVariants}
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  className="cursor-default px-4 py-2 rounded-lg text-sm font-semibold
-                    bg-dark text-light dark:bg-light dark:text-dark
-                    transition-colors duration-200"
+                  className="rounded-lg border border-dark/10 px-3 py-1.5 text-sm text-dark/80 transition-colors hover:border-primary hover:text-primary dark:border-light/10 dark:text-light/80 dark:hover:border-primaryDark dark:hover:text-primaryDark"
                 >
                   {skill}
-                </motion.span>
+                </li>
               ))}
-            </div>
-          </motion.div>
+            </ul>
+          </Reveal>
         ))}
-      </motion.div>
-    </>
+      </div>
+    </section>
   );
 };
 

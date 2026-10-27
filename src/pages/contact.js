@@ -1,7 +1,7 @@
 import { useState, useRef, useCallback } from "react";
 import Layout from "@/components/Layout";
 import Head from "next/head";
-import AnimatedText from "@/components/AnimatedText";
+import { Arrow, Eyebrow, Reveal, StatusPill } from "@/components/ui";
 import TransitionEffect from "@/components/TransitionEffect";
 import { useRouter } from "next/router";
 import emailjs from "@emailjs/browser";
@@ -95,131 +95,130 @@ function ContactForm() {
     [executeRecaptcha, formData, router]
   );
 
+  const field =
+    "w-full rounded-xl border border-dark/15 bg-light px-4 py-3 text-[15px] text-dark transition-colors placeholder:text-dark/35 focus:border-primary dark:border-light/15 dark:bg-dark dark:text-light dark:placeholder:text-light/35 dark:focus:border-primaryDark";
+  const label = "mb-1.5 block font-mono text-[11px] uppercase tracking-wider text-dark/55 dark:text-light/55";
+
   return (
-    <div className="grid w-full grid-cols-8 gap-16 lg:gap-12 md:grid-cols-1 md:gap-10">
-      {/* Left side - intro text */}
-      <div className="col-span-4 flex flex-col items-start justify-start md:col-span-8 md:order-1">
-        <h2 className="mb-6 text-3xl font-bold capitalize text-primary dark:text-primaryDark font-heading md:text-2xl">
-          What&apos;s Next?
-        </h2>
-        <p className="mb-4 text-lg leading-relaxed">
-          My inbox is always open. Whether for a question, opportunity,
-          collaboration, or just to say hi — feel free to reach out.
-        </p>
-        <p className="text-base text-dark/70 dark:text-light/70">
-          Usually reply within 1-2 days.
-        </p>
-      </div>
-
-      {/* Right side - form */}
-      <div className="relative col-span-4 h-max md:col-span-8 md:order-2">
-        <div className="rounded-2xl border border-solid border-dark bg-light p-8 shadow-lg dark:border-light dark:bg-dark xs:p-6">
-          <form
-            ref={formRef}
-            name="contact-form"
-            onSubmit={handleSubmit}
-            className="flex flex-col gap-5"
-          >
-            <div>
-              <label className="mb-1 block text-sm font-medium text-dark dark:text-light">
-                Your Name
-              </label>
-              <input
-                type="text"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                required
-                autoComplete="name"
-                className="w-full rounded-md border border-dark/30 bg-light px-4 py-2.5 text-dark outline-none focus:border-primaryDark dark:border-light/30 dark:bg-dark dark:text-light dark:focus:border-primaryDark"
-              />
-            </div>
-
-            <div>
-              <label className="mb-1 block text-sm font-medium text-dark dark:text-light">
-                Your Email
-              </label>
-              <input
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-                autoComplete="email"
-                className="w-full rounded-md border border-dark/30 bg-light px-4 py-2.5 text-dark outline-none focus:border-primaryDark dark:border-light/30 dark:bg-dark dark:text-light dark:focus:border-primaryDark"
-              />
-            </div>
-
-            <div>
-              <label className="mb-1 block text-sm font-medium text-dark dark:text-light">
-                Message
-              </label>
-              <textarea
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                required
-                rows={5}
-                className="w-full rounded-md border border-dark/30 bg-light px-4 py-2.5 text-dark outline-none focus:border-primaryDark dark:border-light/30 dark:bg-dark dark:text-light dark:focus:border-primaryDark"
-              />
-            </div>
-
-            {status === "error" && (
-              <p className="rounded-md bg-red-100 p-3 text-center text-red-700 dark:bg-red-900/30 dark:text-red-400">
-                {errorMsg}
-              </p>
-            )}
-
-            {status === "success" && (
-              <p className="rounded-md bg-green-100 p-3 text-center text-green-700 dark:bg-green-900/30 dark:text-green-400">
-                Message sent successfully! Redirecting...
-              </p>
-            )}
-
-            <button
-              type="submit"
-              disabled={loading}
-              className={`mt-2 rounded-md border-2 border-dark px-8 py-3 font-semibold uppercase tracking-wide transition disabled:opacity-50 dark:border-light ${
-                loading
-                  ? "bg-dark/70 text-light dark:bg-light/70 dark:text-dark"
-                  : "bg-dark text-light hover:bg-transparent hover:text-dark dark:bg-light dark:text-dark dark:hover:bg-transparent dark:hover:text-light"
-              }`}
-            >
-              {loading ? "Sending..." : "Send Message"}
-            </button>
-          </form>
+    <form ref={formRef} name="contact-form" onSubmit={handleSubmit} className="flex flex-col gap-5">
+      <div className="grid grid-cols-2 gap-5 sm:grid-cols-1">
+        <div>
+          <label htmlFor="name" className={label}>
+            Name
+          </label>
+          <input id="name" type="text" name="name" value={formData.name} onChange={handleChange} required autoComplete="name" placeholder="Jane Doe" className={field} />
+        </div>
+        <div>
+          <label htmlFor="email" className={label}>
+            Email
+          </label>
+          <input id="email" type="email" name="email" value={formData.email} onChange={handleChange} required autoComplete="email" placeholder="jane@company.com" className={field} />
         </div>
       </div>
-    </div>
+
+      <div>
+        <label htmlFor="message" className={label}>
+          Message
+        </label>
+        <textarea
+          id="message"
+          name="message"
+          value={formData.message}
+          onChange={handleChange}
+          required
+          rows={6}
+          placeholder="A role, a project, or a question…"
+          className={`${field} resize-y`}
+        />
+      </div>
+
+      <div aria-live="polite">
+        {status === "error" && (
+          <p className="rounded-xl border border-red-500/30 bg-red-500/10 p-3 text-sm text-red-700 dark:text-red-400">{errorMsg}</p>
+        )}
+        {status === "success" && (
+          <p className="rounded-xl border border-emerald-500/30 bg-emerald-500/10 p-3 text-sm text-emerald-700 dark:text-emerald-400">
+            Message sent. Redirecting…
+          </p>
+        )}
+      </div>
+
+      <div className="flex items-center justify-between gap-4 sm:flex-col sm:items-stretch">
+        <p className="font-mono text-[11px] text-dark/45 dark:text-light/45">Protected by reCAPTCHA</p>
+        <button
+          type="submit"
+          disabled={loading}
+          className="inline-flex items-center justify-center gap-2 rounded-full bg-dark px-6 py-3 text-sm font-medium text-light transition-colors hover:bg-primary disabled:opacity-60 dark:bg-light dark:text-dark dark:hover:bg-primaryDark"
+        >
+          {loading ? "Sending…" : "Send message"}
+          {!loading && <Arrow />}
+        </button>
+      </div>
+    </form>
   );
 }
+
+const CHANNELS = [
+  { label: "LinkedIn", value: "john-rhunor-ighoshemu", href: "https://www.linkedin.com/in/john-rhunor-ighoshemu-7979a8214" },
+  { label: "GitHub", value: "@rhunor", href: "https://github.com/rhunor" },
+  { label: "Résumé", value: "Download PDF", href: "/engr-john-rhunor-resume.pdf", download: true },
+];
 
 export default function Contact() {
   return (
     <>
       <Head>
         <title>Contact | John Rhunor</title>
-        <meta name="description" content="Get in touch with John Rhunor" />
+        <meta name="description" content="Get in touch with John Rhunor about roles, freelance projects or collaborations." />
       </Head>
 
       <TransitionEffect />
-      <main className="flex w-full flex-col items-center justify-center dark:text-light">
-        <Layout className="pt-16">
-          <AnimatedText
-            text="Begin Today, I'm One Message Away"
-            className="mb-16 !text-8xl !leading-tight lg:!text-7xl sm:!text-6xl xs:!text-4xl sm:mb-8"
-          />
+      <main id="content">
+        <section className="relative -mt-[76px] overflow-hidden pt-[76px]">
+          <div className="blueprint pointer-events-none absolute inset-0" aria-hidden="true" />
+          <Layout className="relative grid grid-cols-12 gap-14 pt-20 lg:flex lg:flex-col lg:gap-10 md:pt-12">
+            <Reveal className="col-span-5 lg:col-span-12">
+              <Eyebrow index="01">Contact</Eyebrow>
+              <h1 className="mt-4 font-heading text-5xl font-semibold leading-[1.06] tracking-tight lg:text-4xl">
+                Let&apos;s build something <span className="text-primary dark:text-primaryDark">solid.</span>
+              </h1>
+              <p className="mt-5 text-[17px] leading-relaxed text-dark/70 dark:text-light/70">
+                My inbox is always open. Whether for a question, opportunity, collaboration, or just to say hi, feel free to reach out.
+              </p>
+              <div className="mt-6">
+                <StatusPill />
+              </div>
 
-          <div className="relative flex w-full flex-col items-center justify-center rounded-2xl rounded-br-2xl border border-solid border-dark bg-light p-8 shadow-2xl dark:border-light dark:bg-dark xs:p-4">
-            <div className="absolute top-0 -right-5 -z-10 h-[103%] w-[101.5%] rounded-[2.5rem] rounded-br-3xl bg-dark dark:bg-light md:-right-2 md:w-[101%] xs:rounded-[1.5rem]" />
+              <ul className="mt-10 divide-y divide-dark/10 border-y border-dark/10 dark:divide-light/10 dark:border-light/10">
+                {CHANNELS.map((c) => (
+                  <li key={c.label}>
+                    <a
+                      href={c.href}
+                      download={c.download}
+                      target={c.download ? undefined : "_blank"}
+                      rel={c.download ? undefined : "noopener noreferrer"}
+                      className="group flex items-center justify-between py-4"
+                    >
+                      <span className="font-mono text-xs uppercase tracking-wider text-dark/50 dark:text-light/50">{c.label}</span>
+                      <span className="flex items-center gap-2 text-[15px] transition-colors group-hover:text-primary dark:group-hover:text-primaryDark">
+                        {c.value} <Arrow />
+                      </span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-4 font-mono text-[11px] text-dark/45 dark:text-light/45">Usually replies within 1–2 days · WAT (UTC+1)</p>
+            </Reveal>
 
-            <GoogleReCaptchaProvider
-              reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
-            >
-              <ContactForm />
-            </GoogleReCaptchaProvider>
-          </div>
-        </Layout>
+            <Reveal delay={0.1} className="col-span-7 lg:col-span-12">
+              <div className="corner-ticks rounded-2xl border border-dark/10 bg-paper p-8 dark:border-light/10 dark:bg-ink sm:p-5">
+                <GoogleReCaptchaProvider reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}>
+                  <ContactForm />
+                </GoogleReCaptchaProvider>
+              </div>
+            </Reveal>
+          </Layout>
+        </section>
       </main>
     </>
   );

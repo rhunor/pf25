@@ -1,271 +1,132 @@
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Logo from "./Logo";
 import { useRouter } from "next/router";
-import {
-  GithubIcon,
-  LinkedInIcon,
-  ResumeIcon,
-  MoonIcon,
-  SunIcon,
-} from "./Icons";
+import { GithubIcon, LinkedInIcon, MoonIcon, SunIcon } from "./Icons";
 import { motion, AnimatePresence } from "framer-motion";
 import { useThemeSwitch } from "./Hooks/useThemeSwitch";
 
-const CustomLink = ({ href, title }) => {
-  const router = useRouter();
+const LINKS = [
+  { href: "/", title: "Home" },
+  { href: "/projects", title: "Work" },
+  { href: "/about", title: "About" },
+  { href: "/contact", title: "Contact" },
+];
 
-  return (
-    <Link
-      href={href}
-      className="relative group text-sm font-medium tracking-wide uppercase
-        text-dark dark:text-light transition-colors duration-200"
-    >
-      {title}
-      <span
-        className={`
-          absolute left-0 -bottom-0.5 h-[1px] bg-primary dark:bg-primaryDark
-          transition-[width] ease duration-300
-          ${router.asPath === href ? "w-full" : "w-0"}
-          group-hover:w-full
-        `}
-      >
-        &nbsp;
-      </span>
-    </Link>
-  );
-};
+const isActive = (path, href) => (href === "/" ? path === "/" : path.startsWith(href));
 
-const CustomMobileLink = ({ href, title, toggle }) => {
-  const router = useRouter();
-
-  const handleClick = () => {
-    toggle();
-    router.push(href);
-  };
-
-  return (
-    <button
-      className="relative group text-base font-medium tracking-widest uppercase
-        text-light dark:text-dark transition-colors duration-200 py-1"
-      onClick={handleClick}
-    >
-      {title}
-      <span
-        className={`
-          absolute left-0 -bottom-0.5 h-[1px] bg-primaryDark
-          transition-[width] ease duration-300
-          ${router.asPath === href ? "w-full" : "w-0"}
-          group-hover:w-full
-        `}
-      >
-        &nbsp;
-      </span>
-    </button>
-  );
-};
+const ThemeToggle = ({ mode, setMode }) => (
+  <button
+    onClick={() => setMode(mode === "light" ? "dark" : "light")}
+    className="flex h-9 w-9 items-center justify-center rounded-full border border-dark/10 text-dark transition-colors hover:border-dark/30 dark:border-light/10 dark:text-light dark:hover:border-light/30"
+    aria-label={`Switch to ${mode === "light" ? "dark" : "light"} mode`}
+  >
+    <span className="h-5 w-5">{mode === "light" ? <SunIcon className="fill-dark" /> : <MoonIcon className="fill-dark" />}</span>
+  </button>
+);
 
 const Navbar = () => {
   const [mode, setMode] = useThemeSwitch();
   const [isOpen, setIsOpen] = useState(false);
+  const router = useRouter();
+  const path = router.asPath.split(/[?#]/)[0];
 
-  const handleClick = () => {
-    setIsOpen(!isOpen);
-  };
+  useEffect(() => setIsOpen(false), [path]);
 
   return (
-    <>
-      <header
-        className="w-full sticky top-0 z-40
-          flex items-center justify-between px-32 py-4 font-medium
-          bg-light/90 dark:bg-dark/90 backdrop-blur-sm
-          border-b border-dark/8 dark:border-light/8
-          xl:px-24 lg:px-16 md:px-12 sm:px-8
-        "
+    <header className="sticky top-0 z-40 w-full px-6 pt-4 sm:px-3 sm:pt-3">
+      <div
+        className="mx-auto flex max-w-6xl items-center justify-between rounded-full border border-dark/10 bg-light/75 py-2 pl-5 pr-2
+          shadow-[0_8px_30px_-12px_rgba(20,18,16,0.18)] backdrop-blur-md dark:border-light/10 dark:bg-dark/70"
       >
-        {/* Hamburger — mobile/tablet only */}
-        <button
-          type="button"
-          className="flex-col items-center justify-center hidden lg:flex"
-          aria-controls="mobile-menu"
-          aria-expanded={isOpen}
-          aria-label={isOpen ? "Close menu" : "Open menu"}
-          onClick={handleClick}
-        >
-          <span
-            className={`bg-dark dark:bg-light block h-0.5 w-6 rounded-sm transition-all duration-300 ease-out ${
-              isOpen ? "rotate-45 translate-y-1" : "-translate-y-0.5"
-            }`}
-          />
-          <span
-            className={`bg-dark dark:bg-light block h-0.5 w-6 rounded-sm transition-all duration-300 ease-out my-0.5 ${
-              isOpen ? "opacity-0" : "opacity-100"
-            }`}
-          />
-          <span
-            className={`bg-dark dark:bg-light block h-0.5 w-6 rounded-sm transition-all duration-300 ease-out ${
-              isOpen ? "-rotate-45 -translate-y-1" : "translate-y-0.5"
-            }`}
-          />
-        </button>
+        <Logo />
 
-        {/* Desktop nav — hidden on lg and below */}
-        <div className="w-full flex justify-between items-center lg:hidden">
-          <nav className="flex items-center gap-8">
-            <CustomLink href="/" title="Home" />
-            <CustomLink href="/about" title="About" />
-            <CustomLink href="/projects" title="Projects" />
-            <CustomLink href="/contact" title="Contact" />
-          </nav>
+        <nav className="flex items-center gap-1 lg:hidden" aria-label="Main">
+          {LINKS.map(({ href, title }) => {
+            const active = isActive(path, href);
+            return (
+              <Link
+                key={href}
+                href={href}
+                aria-current={active ? "page" : undefined}
+                className={`relative rounded-full px-4 py-1.5 text-sm font-medium transition-colors ${
+                  active ? "text-dark dark:text-light" : "text-dark/60 hover:text-dark dark:text-light/60 dark:hover:text-light"
+                }`}
+              >
+                {active && (
+                  <motion.span
+                    layoutId="nav-active"
+                    className="absolute inset-0 -z-10 rounded-full bg-dark/[0.06] dark:bg-light/[0.08]"
+                    transition={{ type: "spring", stiffness: 400, damping: 32 }}
+                  />
+                )}
+                {title}
+              </Link>
+            );
+          })}
+        </nav>
 
-          <nav className="flex items-center gap-4">
-            <motion.a
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-6"
-              href="https://github.com/rhunor"
-              whileHover={{ y: -2 }}
-              whileTap={{ scale: 0.9 }}
-              aria-label="Visit my GitHub profile"
-            >
-              <GithubIcon />
-            </motion.a>
-
-            <motion.a
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-6 bg-light rounded-full"
-              href="https://www.linkedin.com/in/john-rhunor-ighoshemu-7979a8214"
-              whileHover={{ y: -2 }}
-              whileTap={{ scale: 0.9 }}
-              aria-label="Visit my LinkedIn profile"
-            >
-              <LinkedInIcon />
-            </motion.a>
-
-            <motion.a
-              href="/engr-john-rhunor-resume.pdf"
-              download
-              className="w-6"
-              whileHover={{ y: -2 }}
-              whileTap={{ scale: 0.9 }}
-              aria-label="Download my resume as PDF"
-              title="Download Resume"
-            >
-              <ResumeIcon />
-            </motion.a>
-
-            <button
-              onClick={() => setMode(mode === "light" ? "dark" : "light")}
-              className={`w-7 h-7 ml-1 flex items-center justify-center rounded-full p-1
-                ${mode === "light" ? "bg-dark text-light" : "bg-light text-dark"}
-              `}
-              aria-label={`Switch to ${mode === "light" ? "dark" : "light"} mode`}
-            >
-              {mode === "light" ? (
-                <SunIcon className="fill-dark" />
-              ) : (
-                <MoonIcon className="fill-dark" />
-              )}
-            </button>
-          </nav>
-        </div>
-
-        {/* Logo — centered absolutely */}
-        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-          <Logo />
-        </div>
-
-        {/* Mobile right side: theme toggle only */}
-        <div className="hidden lg:flex items-center">
-          <button
-            onClick={() => setMode(mode === "light" ? "dark" : "light")}
-            className={`w-7 h-7 flex items-center justify-center rounded-full p-1
-              ${mode === "light" ? "bg-dark text-light" : "bg-light text-dark"}
-            `}
-            aria-label={`Switch to ${mode === "light" ? "dark" : "light"} mode`}
+        <div className="flex items-center gap-2">
+          <a
+            href="/engr-john-rhunor-resume.pdf"
+            download
+            className="rounded-full bg-dark px-4 py-2 text-sm font-medium text-light transition-colors hover:bg-primary dark:bg-light dark:text-dark dark:hover:bg-primaryDark sm:hidden"
           >
-            {mode === "light" ? (
-              <SunIcon className="fill-dark" />
-            ) : (
-              <MoonIcon className="fill-dark" />
-            )}
+            Résumé
+          </a>
+          <ThemeToggle mode={mode} setMode={setMode} />
+          <button
+            type="button"
+            className="hidden h-9 w-9 flex-col items-center justify-center gap-[5px] rounded-full border border-dark/10 dark:border-light/10 lg:flex"
+            aria-controls="mobile-menu"
+            aria-expanded={isOpen}
+            aria-label={isOpen ? "Close menu" : "Open menu"}
+            onClick={() => setIsOpen((o) => !o)}
+          >
+            <span className={`block h-px w-4 bg-dark transition-transform dark:bg-light ${isOpen ? "translate-y-[3px] rotate-45" : ""}`} />
+            <span className={`block h-px w-4 bg-dark transition-transform dark:bg-light ${isOpen ? "-translate-y-[3px] -rotate-45" : ""}`} />
           </button>
         </div>
-      </header>
+      </div>
 
-      {/* Mobile menu — full-screen overlay, outside header so it doesn't inherit sticky */}
       <AnimatePresence>
         {isOpen && (
-          <motion.div
+          <motion.nav
             id="mobile-menu"
-            className="fixed inset-0 z-50 flex flex-col items-center justify-center
-              bg-dark/95 dark:bg-light/95 backdrop-blur-md"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
+            aria-label="Mobile"
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.18 }}
+            className="mx-auto mt-2 hidden max-w-6xl flex-col rounded-3xl border border-dark/10 bg-light/95 p-3 backdrop-blur-md dark:border-light/10 dark:bg-dark/95 lg:flex"
           >
-            {/* Close button */}
-            <button
-              onClick={handleClick}
-              className="absolute top-6 right-8 text-light dark:text-dark"
-              aria-label="Close menu"
-            >
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <line x1="18" y1="6" x2="6" y2="18" />
-                <line x1="6" y1="6" x2="18" y2="18" />
-              </svg>
-            </button>
-
-            <nav className="flex flex-col items-center gap-8 mb-12">
-              <CustomMobileLink toggle={handleClick} href="/" title="Home" />
-              <CustomMobileLink toggle={handleClick} href="/about" title="About" />
-              <CustomMobileLink toggle={handleClick} href="/projects" title="Projects" />
-              <CustomMobileLink toggle={handleClick} href="/contact" title="Contact" />
-            </nav>
-
-            <nav className="flex items-center gap-6">
-              <motion.a
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-7"
-                href="https://github.com/rhunor"
-                whileHover={{ y: -2 }}
-                whileTap={{ scale: 0.9 }}
-                aria-label="Visit my GitHub profile"
+            {LINKS.map(({ href, title }, i) => (
+              <Link
+                key={href}
+                href={href}
+                className={`flex items-center justify-between rounded-2xl px-4 py-3 text-base font-medium ${
+                  isActive(path, href) ? "bg-dark/[0.06] dark:bg-light/[0.08]" : ""
+                }`}
               >
+                {title}
+                <span className="font-mono text-xs text-dark/40 dark:text-light/40">0{i + 1}</span>
+              </Link>
+            ))}
+            <div className="mt-2 flex items-center gap-3 border-t border-dark/10 px-4 pt-4 dark:border-light/10">
+              <a href="/engr-john-rhunor-resume.pdf" download className="flex-1 rounded-full bg-dark py-2.5 text-center text-sm font-medium text-light dark:bg-light dark:text-dark">
+                Download résumé
+              </a>
+              <a href="https://github.com/rhunor" target="_blank" rel="noopener noreferrer" className="w-7" aria-label="GitHub">
                 <GithubIcon />
-              </motion.a>
-
-              <motion.a
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-7 bg-light rounded-full"
-                href="https://www.linkedin.com/in/john-rhunor-ighoshemu-7979a8214"
-                whileHover={{ y: -2 }}
-                whileTap={{ scale: 0.9 }}
-                aria-label="Visit my LinkedIn profile"
-              >
+              </a>
+              <a href="https://www.linkedin.com/in/john-rhunor-ighoshemu-7979a8214" target="_blank" rel="noopener noreferrer" className="w-7 rounded-full bg-light" aria-label="LinkedIn">
                 <LinkedInIcon />
-              </motion.a>
-
-              <motion.a
-                href="/engr-john-rhunor-resume.pdf"
-                download
-                className="w-7"
-                whileHover={{ y: -2 }}
-                whileTap={{ scale: 0.9 }}
-                aria-label="Download my resume as PDF"
-                title="Download Resume"
-              >
-                <ResumeIcon />
-              </motion.a>
-            </nav>
-          </motion.div>
+              </a>
+            </div>
+          </motion.nav>
         )}
       </AnimatePresence>
-    </>
+    </header>
   );
 };
 

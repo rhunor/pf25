@@ -13,7 +13,8 @@ module.exports = {
     extend: {
       fontFamily: {
         mont: ["var(--font-dm-sans)", ...fontFamily.sans],
-        heading: ["var(--font-cormorant)", ...fontFamily.serif],
+        heading: ["var(--font-grotesk)", ...fontFamily.sans],
+        mono: ["var(--font-mono)", ...fontFamily.mono],
       },
       colors: {
         dark: "#141210",
@@ -22,6 +23,9 @@ module.exports = {
         primaryDark: "#c9a55a",
         lightGreen: "#c9a55a",
         slideGreen: "#7a5c2e",
+        // surfaces one step off the page background, for cards and panels
+        paper: "#fbf8f2",
+        ink: "#1c1915",
       },
       animation: {
         "spin-slow": "spin 8s linear infinite",
