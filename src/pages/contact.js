@@ -2,6 +2,7 @@ import { useState, useRef, useCallback } from "react";
 import Layout from "@/components/Layout";
 import Head from "next/head";
 import { Arrow, Eyebrow, Reveal, StatusPill } from "@/components/ui";
+import { SOCIAL } from "@/data/social";
 import TransitionEffect from "@/components/TransitionEffect";
 import { useRouter } from "next/router";
 import emailjs from "@emailjs/browser";
@@ -159,8 +160,9 @@ function ContactForm() {
 }
 
 const CHANNELS = [
-  { label: "LinkedIn", value: "john-rhunor-ighoshemu", href: "https://www.linkedin.com/in/john-rhunor-ighoshemu-7979a8214" },
-  { label: "GitHub", value: "@rhunor", href: "https://github.com/rhunor" },
+  { label: "LinkedIn", value: "john-rhunor", href: SOCIAL.linkedin },
+  { label: "X", value: "@rhunorr", href: SOCIAL.x },
+  { label: "GitHub", value: "@rhunor", href: SOCIAL.github },
   { label: "Résumé", value: "Download PDF", href: "/engr-john-rhunor-resume.pdf", download: true },
 ];
 

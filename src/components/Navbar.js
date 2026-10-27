@@ -2,7 +2,8 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import Logo from "./Logo";
 import { useRouter } from "next/router";
-import { GithubIcon, LinkedInIcon, MoonIcon, SunIcon } from "./Icons";
+import { GithubIcon, LinkedInIcon, MoonIcon, SunIcon, XIcon } from "./Icons";
+import { SOCIAL } from "@/data/social";
 import { motion, AnimatePresence } from "framer-motion";
 import { useThemeSwitch } from "./Hooks/useThemeSwitch";
 
@@ -116,11 +117,14 @@ const Navbar = () => {
               <a href="/engr-john-rhunor-resume.pdf" download className="flex-1 rounded-full bg-dark py-2.5 text-center text-sm font-medium text-light dark:bg-light dark:text-dark">
                 Download résumé
               </a>
-              <a href="https://github.com/rhunor" target="_blank" rel="noopener noreferrer" className="w-7" aria-label="GitHub">
+              <a href={SOCIAL.github} target="_blank" rel="noopener noreferrer" className="w-7" aria-label="GitHub">
                 <GithubIcon />
               </a>
-              <a href="https://www.linkedin.com/in/john-rhunor-ighoshemu-7979a8214" target="_blank" rel="noopener noreferrer" className="w-7 rounded-full bg-light" aria-label="LinkedIn">
+              <a href={SOCIAL.linkedin} target="_blank" rel="noopener noreferrer" className="w-7 rounded-full bg-light" aria-label="LinkedIn">
                 <LinkedInIcon />
+              </a>
+              <a href={SOCIAL.x} target="_blank" rel="noopener noreferrer" className="w-6 text-dark dark:text-light" aria-label="X (Twitter)">
+                <XIcon />
               </a>
             </div>
           </motion.nav>

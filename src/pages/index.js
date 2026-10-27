@@ -5,7 +5,8 @@ import TransitionEffect from "@/components/TransitionEffect";
 import ProjectCard from "@/components/ProjectCard";
 import { motion, useReducedMotion } from "framer-motion";
 import { Arrow, Button, Eyebrow, Reveal, SectionHeading, StatusPill, Tag } from "@/components/ui";
-import { GithubIcon, LinkedInIcon } from "@/components/Icons";
+import { GithubIcon, LinkedInIcon, XIcon } from "@/components/Icons";
+import { SOCIAL } from "@/data/social";
 import { projects } from "@/data/projects";
 
 // canvas-only, nothing to server-render
@@ -91,17 +92,20 @@ export default function Home() {
                   Download résumé
                 </Button>
                 <span className="ml-2 flex items-center gap-3">
-                  <a href="https://github.com/rhunor" target="_blank" rel="noopener noreferrer" className="w-6 opacity-70 transition-opacity hover:opacity-100" aria-label="GitHub">
+                  <a href={SOCIAL.github} target="_blank" rel="noopener noreferrer" className="w-6 opacity-70 transition-opacity hover:opacity-100" aria-label="GitHub">
                     <GithubIcon />
                   </a>
                   <a
-                    href="https://www.linkedin.com/in/john-rhunor-ighoshemu-7979a8214"
+                    href={SOCIAL.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-6 rounded-full bg-light opacity-70 transition-opacity hover:opacity-100"
                     aria-label="LinkedIn"
                   >
                     <LinkedInIcon />
+                  </a>
+                  <a href={SOCIAL.x} target="_blank" rel="noopener noreferrer" className="w-5 opacity-70 transition-opacity hover:opacity-100" aria-label="X (Twitter)">
+                    <XIcon />
                   </a>
                 </span>
               </motion.div>

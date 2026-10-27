@@ -1,10 +1,12 @@
 import Link from "next/link";
 import React from "react";
 import Layout from "./Layout";
+import { SOCIAL } from "@/data/social";
 
 const LINKS = [
-  { href: "https://github.com/rhunor", label: "GitHub", external: true },
-  { href: "https://www.linkedin.com/in/john-rhunor-ighoshemu-7979a8214", label: "LinkedIn", external: true },
+  { href: SOCIAL.github, label: "GitHub", external: true },
+  { href: SOCIAL.linkedin, label: "LinkedIn", external: true },
+  { href: SOCIAL.x, label: "X", external: true },
   { href: "/engr-john-rhunor-resume.pdf", label: "Résumé", download: true },
   { href: "/contact", label: "Contact" },
 ];
