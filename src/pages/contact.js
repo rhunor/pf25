@@ -3,6 +3,7 @@ import Layout from "@/components/Layout";
 import Head from "next/head";
 import { Arrow, Eyebrow, Reveal, StatusPill } from "@/components/ui";
 import { SOCIAL } from "@/data/social";
+import { ResumeButton } from "@/components/ResumeModal";
 import TransitionEffect from "@/components/TransitionEffect";
 import { useRouter } from "next/router";
 import emailjs from "@emailjs/browser";
@@ -163,7 +164,7 @@ const CHANNELS = [
   { label: "LinkedIn", value: "john-rhunor", href: SOCIAL.linkedin },
   { label: "X", value: "@rhunorr", href: SOCIAL.x },
   { label: "GitHub", value: "@rhunor", href: SOCIAL.github },
-  { label: "Résumé", value: "Download PDF", href: "/engr-john-rhunor-resume.pdf", download: true },
+  { label: "Résumé", value: "View or download", resume: true },
 ];
 
 export default function Contact() {
@@ -192,22 +193,28 @@ export default function Contact() {
               </div>
 
               <ul className="mt-10 divide-y divide-dark/10 border-y border-dark/10 dark:divide-light/10 dark:border-light/10">
-                {CHANNELS.map((c) => (
-                  <li key={c.label}>
-                    <a
-                      href={c.href}
-                      download={c.download}
-                      target={c.download ? undefined : "_blank"}
-                      rel={c.download ? undefined : "noopener noreferrer"}
-                      className="group flex items-center justify-between py-4"
-                    >
+                {CHANNELS.map((c) => {
+                  const inner = (
+                    <>
                       <span className="font-mono text-xs uppercase tracking-wider text-dark/50 dark:text-light/50">{c.label}</span>
                       <span className="flex items-center gap-2 text-[15px] transition-colors group-hover:text-primary dark:group-hover:text-primaryDark">
                         {c.value} <Arrow />
                       </span>
-                    </a>
-                  </li>
-                ))}
+                    </>
+                  );
+                  const cls = "group flex w-full items-center justify-between py-4";
+                  return (
+                    <li key={c.label}>
+                      {c.resume ? (
+                        <ResumeButton className={cls}>{inner}</ResumeButton>
+                      ) : (
+                        <a href={c.href} target="_blank" rel="noopener noreferrer" className={cls}>
+                          {inner}
+                        </a>
+                      )}
+                    </li>
+                  );
+                })}
               </ul>
               <p className="mt-4 font-mono text-[11px] text-dark/45 dark:text-light/45">Usually replies within 1–2 days · WAT (UTC+1)</p>
             </Reveal>

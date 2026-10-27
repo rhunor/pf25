@@ -6,9 +6,10 @@ import Skills from "@/components/Skills";
 import Experience from "@/components/Experience";
 import TransitionEffect from "@/components/TransitionEffect";
 import { Arrow, Button, Eyebrow, Reveal, StatusPill } from "@/components/ui";
+import { useResume } from "@/components/ResumeModal";
 
 const GLANCE = [
-  { label: "Based in", value: "Lagos, Nigeria (WAT, UTC+1)" },
+  { label: "Based in", value: "Abuja, Nigeria (WAT, UTC+1)" },
   { label: "Focus", value: "Full-stack web: Next.js, React, TypeScript, Node.js" },
   { label: "Currently", value: "CTO & Head of Technology at Reallow · Field engineer & lab consultant at LATEQ" },
   { label: "Background", value: "Mechanical engineer by training" },
@@ -16,13 +17,14 @@ const GLANCE = [
 ];
 
 export default function About() {
+  const openResume = useResume();
   return (
     <>
       <Head>
         <title>About | John Rhunor</title>
         <meta
           name="description"
-          content="About John Rhunor Ighoshemu: full-stack web engineer, mechanical engineer and oil chemical consultant based in Lagos."
+          content="About John Rhunor Ighoshemu: full-stack web engineer, mechanical engineer and oil chemical consultant based in Abuja."
         />
       </Head>
 
@@ -57,8 +59,8 @@ export default function About() {
                 </p>
               </div>
               <div className="mt-8 flex flex-wrap gap-3">
-                <Button href="/engr-john-rhunor-resume.pdf" download>
-                  Download résumé
+                <Button onClick={openResume} aria-haspopup="dialog">
+                  View résumé
                 </Button>
                 <Button href="/contact" variant="secondary">
                   Get in touch <Arrow />

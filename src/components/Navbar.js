@@ -4,6 +4,7 @@ import Logo from "./Logo";
 import { useRouter } from "next/router";
 import { GithubIcon, LinkedInIcon, MoonIcon, SunIcon, XIcon } from "./Icons";
 import { SOCIAL } from "@/data/social";
+import { ResumeButton } from "./ResumeModal";
 import { motion, AnimatePresence } from "framer-motion";
 import { useThemeSwitch } from "./Hooks/useThemeSwitch";
 
@@ -68,13 +69,11 @@ const Navbar = () => {
         </nav>
 
         <div className="flex items-center gap-2">
-          <a
-            href="/engr-john-rhunor-resume.pdf"
-            download
+          <ResumeButton
             className="rounded-full bg-dark px-4 py-2 text-sm font-medium text-light transition-colors hover:bg-primary dark:bg-light dark:text-dark dark:hover:bg-primaryDark sm:hidden"
           >
             Résumé
-          </a>
+          </ResumeButton>
           <ThemeToggle mode={mode} setMode={setMode} />
           <button
             type="button"
@@ -114,9 +113,9 @@ const Navbar = () => {
               </Link>
             ))}
             <div className="mt-2 flex items-center gap-3 border-t border-dark/10 px-4 pt-4 dark:border-light/10">
-              <a href="/engr-john-rhunor-resume.pdf" download className="flex-1 rounded-full bg-dark py-2.5 text-center text-sm font-medium text-light dark:bg-light dark:text-dark">
-                Download résumé
-              </a>
+              <ResumeButton className="flex-1 rounded-full bg-dark py-2.5 text-center text-sm font-medium text-light dark:bg-light dark:text-dark">
+                Résumé
+              </ResumeButton>
               <a href={SOCIAL.github} target="_blank" rel="noopener noreferrer" className="w-7" aria-label="GitHub">
                 <GithubIcon />
               </a>

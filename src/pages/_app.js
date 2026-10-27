@@ -1,5 +1,6 @@
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
+import { ResumeProvider } from "@/components/ResumeModal";
 import "@/styles/globals.css";
 import { AnimatePresence } from "framer-motion";
 import localFont from "next/font/local";
@@ -30,11 +31,13 @@ export default function App({ Component, pageProps }) {
         >
           Skip to content
         </a>
-        <Navbar />
-        <AnimatePresence initial={false} mode="wait">
-          <Component key={router.asPath} {...pageProps} />
-        </AnimatePresence>
-        <Footer />
+        <ResumeProvider>
+          <Navbar />
+          <AnimatePresence initial={false} mode="wait">
+            <Component key={router.asPath} {...pageProps} />
+          </AnimatePresence>
+          <Footer />
+        </ResumeProvider>
       </div>
     </>
   );

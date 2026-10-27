@@ -7,6 +7,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { Arrow, Button, Eyebrow, Reveal, SectionHeading, StatusPill, Tag } from "@/components/ui";
 import { GithubIcon, LinkedInIcon, XIcon } from "@/components/Icons";
 import { SOCIAL } from "@/data/social";
+import { useResume } from "@/components/ResumeModal";
 import { projects } from "@/data/projects";
 
 // canvas-only, nothing to server-render
@@ -16,7 +17,7 @@ const FACTS = [
   { value: "5+", label: "Years building" },
   { value: "20+", label: "Projects shipped" },
   { value: "3", label: "Disciplines" },
-  { value: "WAT", label: "Lagos · UTC+1" },
+  { value: "WAT", label: "Abuja · UTC+1" },
 ];
 
 const DISCIPLINES = [
@@ -51,6 +52,7 @@ const fade = (reduce, delay) => ({
 
 export default function Home() {
   const reduce = useReducedMotion();
+  const openResume = useResume();
   const [lead, ...rest] = projects;
 
   return (
@@ -59,7 +61,7 @@ export default function Home() {
         <title>John Rhunor | Full-Stack Engineer</title>
         <meta
           name="description"
-          content="John Rhunor Ighoshemu: full-stack web engineer with a mechanical engineering and oilfield chemicals background, based in Lagos, Nigeria."
+          content="John Rhunor Ighoshemu: full-stack web engineer with a mechanical engineering and oilfield chemicals background, based in Abuja, Nigeria."
         />
       </Head>
 
@@ -88,8 +90,8 @@ export default function Home() {
                 <Button href="/projects">
                   View my work <Arrow />
                 </Button>
-                <Button href="/engr-john-rhunor-resume.pdf" variant="secondary" download>
-                  Download résumé
+                <Button onClick={openResume} variant="secondary" aria-haspopup="dialog">
+                  Résumé
                 </Button>
                 <span className="ml-2 flex items-center gap-3">
                   <a href={SOCIAL.github} target="_blank" rel="noopener noreferrer" className="w-6 opacity-70 transition-opacity hover:opacity-100" aria-label="GitHub">

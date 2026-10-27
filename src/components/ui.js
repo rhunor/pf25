@@ -47,6 +47,12 @@ const BUTTON = {
 
 export const Button = ({ href, children, variant = "primary", external, className = "", ...rest }) => {
   const cls = `inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition-colors duration-200 ${BUTTON[variant]} ${className}`;
+  if (!href)
+    return (
+      <button type="button" className={cls} {...rest}>
+        {children}
+      </button>
+    );
   if (external || rest.download !== undefined)
     return (
       <a href={href} className={cls} target={external ? "_blank" : undefined} rel={external ? "noopener noreferrer" : undefined} {...rest}>

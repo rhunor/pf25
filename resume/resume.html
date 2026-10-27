@@ -1,0 +1,173 @@
+<!doctype html>
+<!--
+  Source for public/engr-john-rhunor-resume.pdf (A4, Charter).
+  To regenerate after editing:
+    "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new --no-pdf-header-footer \
+      --print-to-pdf=public/engr-john-rhunor-resume.pdf resume/resume.html
+  Then refresh the pop-up preview (public/images/resume-preview.jpg) from page 1, and the
+  page count / size shown in src/components/ResumeModal.js.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>John Rhunor Ighoshemu: Résumé</title>
+<meta name="author" content="John Rhunor Ighoshemu">
+<style>
+  @page { size: A4; margin: 15mm 17mm 14mm; }
+  * { box-sizing: border-box; }
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body {
+    margin: 0;
+    font-family: "Charter", "Bitstream Charter", Georgia, serif;
+    font-size: 9.6pt;
+    line-height: 1.38;
+    color: #111;
+  }
+  a { color: inherit; text-decoration: none; }
+  header { text-align: center; margin-bottom: 9pt; }
+  h1 { font-size: 23pt; font-weight: 400; margin: 0 0 4pt; letter-spacing: 0.2pt; }
+  .contact { font-size: 9.2pt; color: #222; }
+  .contact span + span::before { content: "|"; margin: 0 6pt; color: #888; }
+  h2 {
+    font-size: 11.4pt;
+    font-weight: 700;
+    margin: 11pt 0 5pt;
+    padding-bottom: 1.5pt;
+    border-bottom: 0.7pt solid #555;
+    break-after: avoid;
+  }
+  .entry { margin-bottom: 6.5pt; break-inside: avoid; }
+  .row { display: flex; justify-content: space-between; gap: 12pt; align-items: baseline; }
+  .row .date { white-space: nowrap; }
+  ul { margin: 2pt 0 0; padding-left: 13pt; }
+  li { margin: 1pt 0; padding-left: 1pt; }
+  li::marker { font-size: 8pt; }
+  p { margin: 0; text-align: justify; }
+  .sub { font-weight: 700; margin: 5pt 0 0; }
+  .muted { color: #444; }
+</style>
+</head>
+<body>
+<header>
+  <h1>John Rhunor Ighoshemu</h1>
+  <div class="contact">
+    <span>Abuja, Nigeria</span><span><a href="mailto:johnighoshemu@gmail.com">johnighoshemu@gmail.com</a></span><span><a href="tel:+2348034430486">+234-8034430486</a></span><span><a href="https://jrhunor.com/">jrhunor.com</a></span>
+  </div>
+  <div class="contact">
+    <span><a href="https://www.linkedin.com/in/john-rhunor-893029394">linkedin.com/in/john-rhunor-893029394</a></span><span><a href="https://github.com/rhunor">github.com/rhunor</a></span><span><a href="https://x.com/rhunorr">x.com/rhunorr</a></span>
+  </div>
+</header>
+
+<h2>Profile</h2>
+<p>Mechanical engineer and full-stack software engineer with hands-on experience in chemical processes, oil production, field engineering and production web platforms. Currently CTO &amp; Head of Technology at Reallow, leading the engineering of a real estate platform built with Next.js, TypeScript and MongoDB, while continuing as field engineer and laboratory technician at LATEQ Chemical Industries. Skilled in the formulation of oil separation chemicals, mechanical system diagnostics and process optimization, and in building secure, scalable web applications. Seeking to contribute technical leadership, process optimization and field-ready engineering expertise to a forward-thinking technology or energy company.</p>
+
+<h2>Education</h2>
+<div class="entry">
+  <div class="row"><span><b>Afe Babalola University</b>, Ado-Ekiti, Ekiti State: B.Eng. (Mechanical Engineering)</span></div>
+  <ul><li>Grade: Second Class Upper Division</li></ul>
+</div>
+
+<h2>Experience</h2>
+<div class="entry">
+  <div class="row"><span><b>CTO &amp; Head of Technology</b>, <a href="https://reallow.co">Reallow</a></span><span class="date">Sep 2026 – Present</span></div>
+  <ul>
+    <li>Lead technology for Reallow (reallow.co), a direct landlord-to-tenant real estate platform live in Abuja, Port Harcourt and Warri.</li>
+    <li>Own the platform architecture and engineering: Next.js, React, TypeScript, MongoDB and Auth.js, with role-based dashboards for tenants, landlords, admins and support staff.</li>
+    <li>Built Paystack payment flows for listing verification, rent and deposits, with idempotent webhook handling and an atomic wallet ledger.</li>
+    <li>Implemented NIN identity verification, tenancy agreement e-signatures with SHA-256 audit trails, and geofenced field-inspection check-ins.</li>
+    <li>Delivered map-based property search with geocoding, saved-search alerts, and localisation in six languages (English, Hausa, Igbo, Yoruba, Pidgin, Urhobo).</li>
+  </ul>
+</div>
+
+<div class="entry">
+  <div class="row"><span><b>Field Engineer / Laboratory Technician</b>, LATEQ Chemical Industries Ltd</span><span class="date">2018 – 2023; 2024 – Present</span></div>
+  <ul>
+    <li>Led on-site formulation and blending of demulsifiers and other oilfield production chemicals.</li>
+    <li>Conducted field-based testing to evaluate chemical performance during oil-water separation processes.</li>
+    <li>Maintained chemical blending equipment and supervised minor mechanical repairs on pumps and mixing systems.</li>
+    <li>Carried out QA/QC procedures in laboratory settings to verify formulation accuracy and regulatory compliance.</li>
+    <li>Worked with plant engineers to optimize dosing rates and blending workflows, enhancing production efficiency.</li>
+    <li>Documented formulation procedures and field performance reports; supported production scaling.</li>
+    <li>Occasionally automated lab result documentation using lightweight internal tools (Java-based).</li>
+  </ul>
+</div>
+
+<div class="entry">
+  <div class="row"><span><b>Software Developer, Solutions Architect</b>, Huawei Technologies Ltd</span><span class="date">2024</span></div>
+  <ul>
+    <li>Developed and maintained responsive web applications using Next.js, React, Redux, Node.js and MongoDB.</li>
+    <li>Designed and implemented RESTful APIs using Node.js, Express.js and MongoDB.</li>
+    <li>Wrote optimized SQL queries for efficient database operations using PostgreSQL and other relational databases.</li>
+    <li>Utilized Huawei SaaS to manage alarms on sites in the telecommunication sector and implemented automation processes using JavaScript.</li>
+    <li>Managed databases effectively using MongoDB and PostgreSQL.</li>
+    <li>Built microservices with Spring Boot and Java for scalable and efficient backend systems.</li>
+  </ul>
+</div>
+
+<div class="entry">
+  <div class="row"><span><b>Mechanical and Automotive Specialist Intern</b>, Gladtrico International</span><span class="date">2023</span></div>
+  <ul>
+    <li>Participated in troubleshooting engine, brake and suspension systems.</li>
+    <li>Conducted inspections in line with national standards for mechanical performance.</li>
+    <li>Worked alongside senior engineers to maintain optimal vehicle performance through repairs and calibrations.</li>
+    <li>Assisted in diagnosing and repairing mechanical issues in automobiles.</li>
+    <li>Conducted technical inspections to ensure compliance with automotive industry standards.</li>
+  </ul>
+</div>
+
+<div class="entry">
+  <div class="row"><span><b>Mechanical Engineer and Automobile Specialist Intern</b>, RT Briscoe</span><span class="date">2021</span></div>
+  <ul>
+    <li>Diagnosed and repaired mechanical faults in automobiles.</li>
+    <li>Conducted preventive maintenance and inspections to improve machine performance.</li>
+    <li>Collaborated with the team to implement solutions for optimizing automotive systems.</li>
+    <li>Performed engine overhauls, AC system maintenance and preventive maintenance.</li>
+    <li>Supported component testing and technical assessments using industry-standard diagnostic tools.</li>
+  </ul>
+</div>
+
+<h2>Key Projects</h2>
+<div class="entry">
+  <div class="row"><span><b>LATEQ Chemical Industries Ltd</b></span></div>
+  <ul>
+    <li>Redesigned the demulsifier batching process, reducing blending cycle time by 30% and increasing plant throughput.</li>
+    <li>Coordinated QA testing and documentation across three client sites, cutting chemical rejection incidents by 40%.</li>
+    <li>Upgraded dosing systems to reduce overconsumption, resulting in a 12% drop in chemical waste per barrel treated.</li>
+  </ul>
+</div>
+<div class="entry">
+  <div class="row"><span><b>Software</b> <span class="muted">(case studies at jrhunor.com)</span></span></div>
+  <ul>
+    <li><b>Primetrex Affiliate System</b>: affiliate platform for a copy trading service, with Telegram bot integration, referral tracking and payment processing.</li>
+    <li><b>Averis Academy Platform</b>: affiliate and learning management platform (Next.js, TypeScript, MongoDB, NextAuth) with real-time analytics dashboards.</li>
+    <li><b>OliveHaus Daily Manager</b>: real-time client project management platform with progress tracking, change requests and messaging.</li>
+  </ul>
+</div>
+
+<h2>Key Skills &amp; Tools</h2>
+<div class="entry">
+  <div class="sub" style="margin-top:0">Software Engineering</div>
+  <ul>
+    <li>Languages &amp; Frameworks: TypeScript, JavaScript, Java, Next.js, React, Node.js, Express, Spring Boot, Tailwind CSS</li>
+    <li>Data &amp; Infrastructure: MongoDB, PostgreSQL, REST APIs, Git, Docker, Vercel, Cloudinary, Paystack</li>
+  </ul>
+  <div class="sub">Engineering &amp; Technical Skills</div>
+  <ul>
+    <li>Mechanical Systems: Diagnostics, maintenance, fault repair, system optimization</li>
+    <li>Chemical Processes: Oil separation, demulsifier formulation, QA/QC testing</li>
+    <li>Design &amp; Process Tools: AutoCAD, P&amp;ID interpretation, HAZOP fundamentals</li>
+    <li>Simulation (Basic): MATLAB, Aspen HYSYS (introductory knowledge)</li>
+  </ul>
+  <div class="sub">Professional Capabilities</div>
+  <ul>
+    <li>Technical Leadership &amp; Platform Architecture</li>
+    <li>Field Engineering &amp; Supervision</li>
+    <li>Cross-Functional Collaboration</li>
+    <li>Technical Documentation &amp; Reporting</li>
+  </ul>
+</div>
+
+<h2>References</h2>
+<p>Available on request.</p>
+</body>
+</html>
