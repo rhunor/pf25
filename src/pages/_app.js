@@ -2,13 +2,15 @@ import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import "@/styles/globals.css";
 import { AnimatePresence } from "framer-motion";
-import { DM_Sans, Space_Grotesk, JetBrains_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import Head from "next/head";
 import { useRouter } from "next/router";
 
-const dmSans = DM_Sans({ subsets: ["latin"], variable: "--font-dm-sans", weight: ["300", "400", "500", "600", "700"] });
-const grotesk = Space_Grotesk({ subsets: ["latin"], variable: "--font-grotesk", weight: ["400", "500", "600", "700"] });
-const mono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono", weight: ["400", "500"] });
+// Self-hosted variable fonts (latin subset from Google Fonts). Fetching from Google at build
+// time broke Vercel builds when it served extension-less font URLs next/font couldn't parse.
+const dmSans = localFont({ src: "../fonts/dm-sans-latin.woff2", variable: "--font-dm-sans", weight: "300 700", display: "swap" });
+const grotesk = localFont({ src: "../fonts/space-grotesk-latin.woff2", variable: "--font-grotesk", weight: "400 700", display: "swap" });
+const mono = localFont({ src: "../fonts/jetbrains-mono-latin.woff2", variable: "--font-mono", weight: "400 500", display: "swap" });
 
 export default function App({ Component, pageProps }) {
   const router = useRouter();
