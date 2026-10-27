@@ -78,7 +78,7 @@ export default function Home() {
               <motion.h1 {...fade(reduce, 0.12)} className="mt-6 font-heading text-6xl font-semibold leading-[1.02] tracking-tight xl:text-5xl sm:text-[2.6rem]">
                 John Rhunor.
                 <span className="block text-dark/45 dark:text-light/45">
-                  Full-stack engineer with an <span className="text-primary dark:text-primaryDark">engineer&apos;s</span> discipline.
+                  Full-stack developer with an <span className="text-primary dark:text-primaryDark">engineer&apos;s</span> discipline.
                 </span>
               </motion.h1>
               <motion.p {...fade(reduce, 0.2)} className="mt-6 max-w-xl text-lg leading-relaxed text-dark/70 dark:text-light/70 sm:text-base">
