@@ -1,7 +1,6 @@
 import Layout from "@/components/Layout";
 import Head from "next/head";
-import Image from "next/image";
-import profile from "../../public/images/profile/Rhunor.jpeg";
+import FlipPortrait from "@/components/FlipPortrait";
 import Skills from "@/components/Skills";
 import Experience from "@/components/Experience";
 import TransitionEffect from "@/components/TransitionEffect";
@@ -70,14 +69,13 @@ export default function About() {
 
             <Reveal delay={0.1} className="col-span-5 lg:col-span-12 lg:mx-auto lg:w-full lg:max-w-md">
               <figure>
-                <div className="corner-ticks overflow-hidden rounded-2xl border border-dark/10 bg-paper p-3 dark:border-light/10 dark:bg-ink">
-                  <Image
-                    className="h-auto w-full rounded-xl"
-                    priority
-                    src={profile}
-                    alt="Portrait of John Rhunor Ighoshemu"
-                    sizes="(max-width: 1023px) 448px, 420px"
-                  />
+                <div className="corner-ticks relative rounded-2xl border border-dark/10 bg-paper p-8 dark:border-light/10 dark:bg-ink sm:p-5">
+                  <div className="blueprint absolute inset-0 rounded-2xl" aria-hidden="true" />
+                  <span className="absolute left-4 top-3 font-mono text-[10px] uppercase tracking-wider text-dark/40 dark:text-light/40" aria-hidden="true">
+                    ↻ <span className="lg:hidden">Hover</span>
+                    <span className="hidden lg:inline">Tap</span> to flip
+                  </span>
+                  <FlipPortrait />
                 </div>
                 <figcaption className="mt-3 flex items-center justify-between font-mono text-[11px] text-dark/45 dark:text-light/45">
                   <span>John Rhunor Ighoshemu</span>
