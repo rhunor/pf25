@@ -3,7 +3,7 @@ import Script from "next/script";
 
 export default function Document() {
   return (
-    <Html lang="en-AU">
+    <Html lang="en">
       <Head />
       <body className="bg-light dark:bg-dark">
         <Script id="theme-switcher" strategy="beforeInteractive">

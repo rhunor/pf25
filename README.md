@@ -1,74 +1,45 @@
-# NexTemp | A Next.js Personal Web App
+# John Rhunor: Portfolio
 
-![NexTemp - A Next.js Personal Web App](https://github.com/lilxyzz/nextemp/blob/main/public/NexTemp-cover.png)
+Personal portfolio of John Rhunor Ighoshemu: full-stack engineer, mechanical engineer and oil &
+chemical consultant. Live at [jrhunor.com](https://jrhunor.com).
 
-NexTemp - A bespoke **template** for your **next** web project. NexTemp is a personal portfolio and blog theme built around Next.js. It features a modern, clean, and responsive design, perfect for developers or anyone looking to showcase their work and ideas. For more themes and updates, stay tuned.
+Next.js 14 (pages router) · React 18 · Tailwind CSS 3 · Framer Motion. Deployed on Vercel from `main`.
 
-## 📚 Tech Stack
-Next.js 14+
-React 18+
-Tailwind CSS 3+
-Framer Motion 11+
+## Getting started
 
-## ✨ Features
-- Dark and light color mode 
-- Reusable Components
-- Blog post creation
-- Animations with Framer Motion
-- Tailwind CSS integration
-- Mobile-first responsive layout
-- Sitemap support
-- 95+ Lighthouse
+```bash
+npm install
+npm run dev      # http://localhost:3000
+npm run build    # production build (also regenerates the sitemap)
+```
 
-## 🚀 NexTemp Pro Coming Soon
-**Features**
-- SEO optimised 
-- Post tags and categories
-- Integration with Hashnode CMS for easy post publishing
-- PWA support
-  
+No environment variables are needed.
 
-### 🛠️ Requirements
+## Where things live
 
-- Node 18+
-  - https://nodejs.org/en
-- Yarn
-  - https://classic.yarnpkg.com/en/docs/getting-started
+| What | Where |
+| --- | --- |
+| Projects and case-study content | `src/data/projects.js` (one entry per project; `/projects/[slug]` renders them) |
+| Social links, email, WhatsApp | `src/data/social.js` |
+| Experience timeline | `src/components/Experience.js` |
+| Skills | `src/components/Skills.js` |
+| 3D canvas scenes (molecule, gear, benzene, node graph) | `src/components/Scene3D.js` |
+| Résumé pop-up | `src/components/ResumeModal.js` |
+| Photo / 3D portrait flip | `src/components/FlipPortrait.js` |
+| Shared UI pieces (buttons, tags, headings) | `src/components/ui.js` |
+| Fonts (self-hosted) | `src/fonts/` |
 
+### Adding a project
 
+Add a screenshot to `public/images/projects/`, then add an entry to `src/data/projects.js`. The
+projects grid, home page and case-study page pick it up automatically.
 
-## 🎬 Getting Started
+### Updating the résumé
 
-1. Clone the repository:
-    ```bash
-    git clone https://github.com/lilxyzz/nextemp.git
-    ```
+The PDF at `public/engr-john-rhunor-resume.pdf` is printed from `resume/resume.html`. Edit the
+HTML, then follow the regeneration steps in the comment at the top of that file.
 
-2. Navigate into the repository:
-    ```bash
-    cd NexTemp
-    ```
+## Credits
 
-3. Install the dependencies:
-    ```bash
-    yarn
-    ```
-
-4. Run the development server:
-    ```bash
-    yarn dev
-    ```
-5. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-
-#### 🙏 Thanks
-If you like this theme, don't forget to give it a ⭐.
-
-#### 🤝 Contributing
-Got enhancements you envision? Contributions are welcome! Fork the repo, push your changes, and submit a pull request. Let's make this theme better, together.
-
-#### 👾 Issues
-For any challenges encountered, please feel free to report issues through our issue tracker.
-
-#### 📝 License
-This project is open source and available under the MIT License.
+Originally started from the [NexTemp](https://github.com/lilxyzz/nextemp) template by Travis Lord
+(MIT, see `LICENSE`), since redesigned.

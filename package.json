@@ -1,8 +1,8 @@
 {
-  "name": "NexTemp",
+  "name": "rhunor-portfolio",
   "private": true,
   "version": "1.0.0",
-  "author": "Travis Lord <hi@travislord.xyz>",
+  "author": "John Rhunor Ighoshemu",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -11,16 +11,13 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@emailjs/browser": "^4.4.1",
-    "emailjs": "^4.0.3",
     "eslint": "^9.9.1",
     "eslint-config-next": "^15.1.2",
     "framer-motion": "^11.3.31",
     "next": "14.2.35",
     "next-sitemap": "^4.2.3",
     "react": "18.3.1",
-    "react-dom": "18.3.1",
-    "react-google-recaptcha-v3": "^1.11.0"
+    "react-dom": "18.3.1"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.20",
