@@ -53,7 +53,8 @@ const fade = (reduce, delay) => ({
 export default function Home() {
   const reduce = useReducedMotion();
   const openResume = useResume();
-  const [lead, ...rest] = projects;
+  const lead = projects.find((p) => p.featured);
+  const rest = projects.filter((p) => p !== lead);
 
   return (
     <>

@@ -2,6 +2,8 @@
 // page's "selected work" and each /projects/[slug] case study all read from here.
 
 import reallow from "/public/images/projects/reallow.png";
+import dealRadar from "/public/images/projects/fintech-deal-radar.png";
+import profitex from "/public/images/projects/profitex.png";
 import primetrex from "/public/images/projects/primetrex.png";
 import oliveHausSite from "/public/images/projects/olivehauswebsite.png";
 import oliveHausPMA from "/public/images/projects/olivehauspma1.png";
@@ -12,11 +14,13 @@ import averisWebsite from "/public/images/projects/averiswebsite1.png";
 import averisAffiliate from "/public/images/projects/averisaffiliate1.png";
 import gha from "/public/images/projects/gha.png";
 
-// `category` drives the filter on /projects: "platform" = full-stack product, "website" = marketing/content site.
+// `category` drives the filter on /projects: "platform" = full-stack product, "automation" = bot / agent,
+// "website" = marketing/content site.
 export const projects = [
   {
     slug: "reallow",
     title: "Reallow",
+    featured: true, // the wide lead card with the "Latest" tag, on home and /projects
     tagline: "Direct landlord-to-tenant real estate platform for Nigeria",
     category: "platform",
     type: "Full-stack platform",
@@ -47,6 +51,72 @@ export const projects = [
       "MapLibre map search with automatic geocoding, plus saved-search alerts when a matching listing is approved.",
       "Wallet with atomic conditional debits, so concurrent payments can't spend the same naira twice.",
       "Translated into English, Hausa, Igbo, Yoruba, Pidgin and Urhobo.",
+    ],
+  },
+  {
+    slug: "fintech-deal-radar",
+    title: "Fintech Deal Radar",
+    tagline: "AI news agent for US & Canadian fintech deals, on Telegram",
+    category: "automation",
+    type: "Telegram bot · AI agent",
+    year: "2026",
+    role: "Sole engineer, built for a Canadian client",
+    github: "https://github.com/rhunor/fintechradarfinder",
+    image: dealRadar,
+    stack: ["Next.js 16", "TypeScript", "MongoDB", "Google Gemini", "grammY", "Vercel", "Vitest"],
+    summary:
+      "A monitoring agent built for a Canadian client. It watches 40+ newswire, regulatory and fintech press feeds, uses AI to pick out US and Canadian fintech funding rounds and acquisitions, and posts them to Telegram within minutes, at zero running cost.",
+    metrics: [
+      { value: "40+", label: "news feeds" },
+      { value: "211", label: "automated tests" },
+      { value: "$0", label: "monthly running cost" },
+    ],
+    overview: [
+      "The client needed to hear about fintech deals as they happen without reading dozens of news sites. Fintech Deal Radar polls official RSS and Atom feeds every minute (PR Newswire, GlobeNewswire, SEC EDGAR filings, TechCrunch, BetaKit, Financial Post and more), filters out everything that isn't a tracked event, and sends a formatted alert to a Telegram channel.",
+      "The hard constraint was cost: it runs entirely on free tiers (Vercel Hobby, MongoDB Atlas M0 and Gemini). Every stage is deadline-aware and metered, so the system projects its own monthly usage and warns before it gets near a limit.",
+    ],
+    highlights: [
+      "Serverless poll cycle triggered every minute: the route answers in about 10 ms and finishes the work in the background, behind a lease so cycles never overlap.",
+      "Conditional GET (ETag / Last-Modified) on every feed, with a body-hash fallback, so most cycles skip parsing entirely.",
+      "A cheap keyword prefilter in front of the AI, then one batched Gemini call per cycle with a hard deadline and resilient JSON parsing.",
+      "Six event types (funding, acquisition, launch, expansion, rebrand, partnership), each with its own confidence threshold and repeat window.",
+      "Exactly-once alerts: unique indexes on URL and title hashes plus an atomic claim, so a deal is never sent twice even when several wires report it.",
+      "Graceful degradation: switches to a second model at the daily quota, and keeps keyword-only matches out of the public channel, labelled as unverified.",
+      "Meters CPU and wall-clock time against Vercel's free limits and sends a Telegram warning once usage is projected past 70%.",
+      "Admin commands in Telegram (/status, /stats, /sources, /pause, /resume) and 211 tests, including a live AI classification test.",
+    ],
+  },
+  {
+    slug: "profitex",
+    title: "Profitex Subscription Bot",
+    tagline: "Automated paid-membership bot for a forex trading academy",
+    category: "automation",
+    type: "Telegram bot · Payments",
+    year: "2026",
+    role: "Sole engineer",
+    privateRepo: true,
+    image: profitex,
+    stack: ["TypeScript", "Node.js", "grammY", "MongoDB", "Express", "Paystack", "Flutterwave", "Vercel"],
+    summary:
+      "Runs the whole paid-membership lifecycle for Profitable Forex Trading Academy's private Telegram community: payment, a single-use invite link, renewal reminders, and automatic removal when a subscription lapses.",
+    metrics: [
+      { value: "2", label: "payment gateways" },
+      { value: "3", label: "renewal reminders" },
+      { value: "60 min", label: "single-use invite links" },
+    ],
+    overview: [
+      "Profitex sells access to a private Telegram community for its forex trading academy. A member picks a plan inside the bot, pays by card, bank transfer or USSD through Paystack or Flutterwave, and receives a private invite link the moment the payment is verified.",
+      "From there the bot tracks every subscription: it reminds members before they expire, extends access when they renew early, and removes them automatically when they lapse. The academy's team runs everything (plans, members, broadcasts and manual grants) from an admin menu inside Telegram, with no web dashboard.",
+    ],
+    highlights: [
+      "Every payment is confirmed by calling the gateway's API directly, never by trusting a redirect, a webhook body or a screenshot.",
+      "Exactly-once fulfilment: retried webhooks, refreshed redirects and the \"I have paid\" button share one code path guarded by database-level locks, so a payment can only ever create one subscription.",
+      "Signed webhooks from both gateways: HMAC-SHA512 for Paystack and verif-hash for Flutterwave.",
+      "Single-use invite links (one member, 60-minute expiry), revoked as soon as a newer one is issued.",
+      "Early renewals extend the end date instead of restarting it, and reset the reminder schedule.",
+      "Reminders at 7 days, 3 days and 24 hours that land correctly even on a once-a-day cron, with time-budgeted, resumable passes that chain into fresh invocations when there's a backlog.",
+      "Recovery for payments whose webhook never arrives, and a free-month trial for members of a partner community.",
+      "Telegram admin console with member lists, payment history, plan management, throttled broadcasts and manual grant/revoke, covered by a smoke test and a full lifecycle integration test against an in-memory MongoDB.",
     ],
   },
   {

@@ -10,6 +10,7 @@ import { projects } from "@/data/projects";
 const FILTERS = [
   { id: "all", label: "All" },
   { id: "platform", label: "Full-stack platforms" },
+  { id: "automation", label: "Bots & automation" },
   { id: "website", label: "Websites" },
 ];
 
@@ -23,7 +24,7 @@ export default function Projects() {
         <title>Projects | John Rhunor</title>
         <meta
           name="description"
-          content="Full-stack platforms and websites built by John Rhunor: Reallow, Primetrex, Averis Academy, OliveHaus and more."
+          content="Full-stack platforms, Telegram bots and websites built by John Rhunor: Reallow, Fintech Deal Radar, Profitex, Primetrex, Averis Academy, OliveHaus and more."
         />
       </Head>
 
@@ -70,7 +71,7 @@ export default function Projects() {
           <motion.div layout className="grid grid-cols-2 gap-6 md:grid-cols-1">
             <AnimatePresence mode="popLayout" initial={false}>
               {shown.map((p, i) => {
-                const featured = p.slug === "reallow";
+                const featured = !!p.featured;
                 return (
                   <motion.div
                     key={p.slug}

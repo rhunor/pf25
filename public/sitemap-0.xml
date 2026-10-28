@@ -1,18 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
-<url><loc>/</loc><lastmod>2026-10-27T11:49:32.190Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>//about</loc><lastmod>2026-10-27T11:49:32.192Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>//articles</loc><lastmod>2026-10-27T11:49:32.192Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>//contact</loc><lastmod>2026-10-27T11:49:32.192Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>//projects</loc><lastmod>2026-10-27T11:49:32.192Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>//projects/clay-gatsby-theme</loc><lastmod>2026-10-27T11:49:32.192Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>//projects/rhunortube</loc><lastmod>2026-10-27T11:49:32.192Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>//thanks</loc><lastmod>2026-10-27T11:49:32.192Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>//projects/reallow</loc><lastmod>2026-10-27T11:49:32.192Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>//projects/primetrex</loc><lastmod>2026-10-27T11:49:32.192Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>//projects/averis-academy-affiliate</loc><lastmod>2026-10-27T11:49:32.192Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>//projects/olivehaus-daily-manager</loc><lastmod>2026-10-27T11:49:32.192Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>//projects/olivehaus-website</loc><lastmod>2026-10-27T11:49:32.192Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>//projects/averis-academy-website</loc><lastmod>2026-10-27T11:49:32.192Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>//projects/giftedhomes</loc><lastmod>2026-10-27T11:49:32.192Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.jrhunor.com</loc><lastmod>2026-10-28T05:49:36.894Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.jrhunor.com/about</loc><lastmod>2026-10-28T05:49:36.896Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.jrhunor.com/contact</loc><lastmod>2026-10-28T05:49:36.896Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.jrhunor.com/projects</loc><lastmod>2026-10-28T05:49:36.896Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.jrhunor.com/projects/reallow</loc><lastmod>2026-10-28T05:49:36.896Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.jrhunor.com/projects/fintech-deal-radar</loc><lastmod>2026-10-28T05:49:36.896Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.jrhunor.com/projects/profitex</loc><lastmod>2026-10-28T05:49:36.896Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.jrhunor.com/projects/primetrex</loc><lastmod>2026-10-28T05:49:36.896Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.jrhunor.com/projects/averis-academy-affiliate</loc><lastmod>2026-10-28T05:49:36.896Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.jrhunor.com/projects/olivehaus-daily-manager</loc><lastmod>2026-10-28T05:49:36.896Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.jrhunor.com/projects/olivehaus-website</loc><lastmod>2026-10-28T05:49:36.896Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.jrhunor.com/projects/averis-academy-website</loc><lastmod>2026-10-28T05:49:36.896Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.jrhunor.com/projects/giftedhomes</loc><lastmod>2026-10-28T05:49:36.896Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 </urlset>
