@@ -8,10 +8,13 @@ import { Arrow, Button, Eyebrow, Reveal, SectionHeading, StatusPill, Tag } from 
 import { GithubIcon, LinkedInIcon, XIcon } from "@/components/Icons";
 import { SOCIAL } from "@/data/social";
 import { useResume } from "@/components/ResumeModal";
-import { projects } from "@/data/projects";
+import { getProject, projects } from "@/data/projects";
 
 // canvas-only, nothing to server-render
 const Scene3D = dynamic(() => import("@/components/Scene3D"), { ssr: false });
+
+// Home page "Selected work", in display order after the featured project. /projects lists everything.
+const SHOWCASE = ["fintech-deal-radar", "averis-academy-affiliate", "giftedhomes", "olivehaus-website"];
 
 const FACTS = [
   { value: "5+", label: "Years building" },
@@ -54,7 +57,7 @@ export default function Home() {
   const reduce = useReducedMotion();
   const openResume = useResume();
   const lead = projects.find((p) => p.featured);
-  const rest = projects.filter((p) => p !== lead);
+  const showcase = SHOWCASE.map((slug) => getProject(slug));
 
   return (
     <>
@@ -158,7 +161,7 @@ export default function Home() {
               <Reveal className="col-span-2 md:col-span-1">
                 <ProjectCard project={lead} index="01" featured priority />
               </Reveal>
-              {rest.slice(0, 4).map((p, i) => (
+              {showcase.map((p, i) => (
                 <Reveal key={p.slug} delay={(i % 2) * 0.08}>
                   <ProjectCard project={p} index={`0${i + 2}`} />
                 </Reveal>
